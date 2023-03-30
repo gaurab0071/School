@@ -42,7 +42,8 @@
                     <div class="col-lg-3 col-6">
                         <div class="card" style="width: 15rem; height: 5rem">
                             <div class="card-body">
-                                <a href="/student/create"
+                                <a href="/student/view
+                                "
                                     class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade One</a>
                             </div>
                         </div>
@@ -50,7 +51,8 @@
                     <div class="col-lg-3 col-6">
                         <div class="card" style="width: 15rem; height: 5rem">
                             <div class="card-body">
-                                <a href="/student/create"
+                                <a href="/student/view
+                                "
                                     class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade Two</a>
                             </div>
                         </div>
@@ -58,7 +60,8 @@
                     <div class="col-lg-3 col-6">
                         <div class="card" style="width: 15rem; height: 5rem">
                             <div class="card-body">
-                                <a href="/student/create"
+                                <a href="/student/view
+                                "
                                     class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade Two</a>
                             </div>
                         </div>
@@ -66,7 +69,8 @@
                     <div class="col-lg-3 col-6">
                         <div class="card" style="width: 15rem; height: 5rem">
                             <div class="card-body">
-                                <a href="/student/create"
+                                <a href="/student/view
+                                "
                                     class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade Two</a>
                             </div>
                         </div>

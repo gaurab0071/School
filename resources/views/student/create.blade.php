@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="content-wrapper">
-
         <div class="container">
-
             <div class="row">
                 <div class="col-md-12">
 
@@ -47,7 +45,7 @@
                                 <label for="grade">Class</label>
                                 <select name="grade" class="form-control" required>
                                     @foreach ($grades as $grade)
-                                    <option value="{{ $grade }}">{{ $grade }}</option>
+                                    <option value="{{ $grades }}">{{ $grade }}</option>
                                     @endforeach
                                 </select>
                             </div>
