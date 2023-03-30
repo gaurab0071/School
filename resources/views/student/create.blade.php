@@ -41,16 +41,26 @@
                             </div>
 
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="grade">Class</label>
                                 <select name="grade" class="form-control" required>
                                     @foreach ($grades as $grade)
                                     <option value="{{ $grades }}">{{ $grade }}</option>
                                     @endforeach
                                 </select>
+                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="grade_id">Select Grade</label>
+                                <select id="grade_id" class="form-control" name="grade_id">
+                                    @foreach ($grades as $grade)
+                                    <option value="{{ $grade->id}}">{{ $grade->name}}</option>
+
+                                    @endforeach
+                                </select>
                             </div>
 
-                            
+
                             <div class="form-group">
                                 <label for="section">Gender</label>
 

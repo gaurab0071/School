@@ -19,6 +19,7 @@ class StudentController extends Controller
         return view('student.view', compact('students'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view ('student.create');
+        $grades = Grade::all();
+        return view ('student.create', compact('grades'));
     }
 
     /**
