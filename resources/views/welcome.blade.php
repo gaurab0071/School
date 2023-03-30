@@ -72,8 +72,7 @@
                          </div>
                      </div>
                  </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div><!-- /.content -->
-            </div><!-- /.content -->
-        </div>
-   @endsection
+             </div><!-- /.container-fluid -->
+         </div><!-- /.content -->
+     </div><!-- /.content wrapper -->
+ @endsection
