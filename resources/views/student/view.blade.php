@@ -20,15 +20,15 @@
             <!-- search bar  -->
             <nav class="navbar-light float-right mb-2 mx-2 ">
                 <div class="container-fluid">
-                  <form class="d-flex">
-                    <input class="form-control mx-2 me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
+                    <form class="d-flex">
+                        <input class="form-control mx-2 me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
-              </nav>
+            </nav>
 
-              <!-- add teacher button -->
-            <a href="/student/create" class="mb-2 mx-2 btn btn-info">+ Add new Student</a>
+            <!-- add teacher button -->
+            <a href="/student" class="mb-2 mx-2 btn btn-primary">Back</a>
 
             <div class="container">
                 <div class="row">
@@ -43,26 +43,38 @@
                                     <th>Parent's Name</th>
                                     <th>Contact</th>
                                     <th>Address</th>
+                                    <th>Gender</th>
+                                    <th>Report</th>
+                                    {{-- <th>Grade</th> --}}
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            {{-- @foreach ($teachers as $teacher)
-                                <tbody>
+                            <tbody>
+                                @foreach ($students as $student)
                                     <tr>
-                                        <td>{{ $teacher->id }}</td>
-                                        <td>{{ $teacher->name }}</td>
-                                        <td>{{ $teacher->contact }}</td>
-                                        <td>{{ $teacher->email }}</td>
+                                        <td>{{ $student->id }}</td>
+                                        <td>{{ $student->idnumber }}</td>
+                                        <td>{{ $student->roll }}</td>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->parent }}</td>
+                                        <td>{{ $student->contact }}</td>
+                                        <td>{{ $student->address }}</td>
+                                        <td>{{ $student->gender }}</td>
+                                        <td><img src="{{ asset($student->report) }}" width="50" alt=""></td>
+                                        {{-- <td>{{ $student->grade->name }}</td> --}}
+
                                         <td style="display: inline-block;">
-                                            <form action="/teacher/{{ $teacher->id }}" method="post">
+                                            <form action="/student/{{ $student->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="/teacher/{{ $teacher->id }}/edit" class="badge bg-info">Edit</a>
+                                                <a href="/student/{{ $student->id }}/edit" class="badge bg-info">Edit</a>
                                                 <button type="submit" class="badge btn bg-danger">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
-                                </tbody>
-                            @endforeach --}}
+                                @endforeach
+                            </tbody>
+
                         </table>
                     </div>
                 </div>

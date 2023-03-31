@@ -18,30 +18,30 @@ use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-});
+// Route::get('/dashboard', function () {
+//     return view('welcome');
+// });
 
-Route::get('/teacher', function () {
-    return view('teacher.index');
-});
+// Route::get('/teacher', function () {
+//     return view('teacher.index');
+// });
 
 
-Route::get('/create', function () {
-    return view('teacher.create');
-});
+// Route::get('/create', function () {
+//     return view('teacher.create');
+// });
 
-Route::get('/grade', function () {
-    return view('grade.index');
-});
+// Route::get('/grade', function () {
+//     return view('grade.index');
+// });
 
-Route::get('/create', function () {
-    return view('grade.create');
-});
+// Route::get('/create', function () {
+//     return view('grade.create');
+// });
 // Route::get('/grade/{id}/student', [App\Http\Controllers\StudentController::class, 'index'])->name('student.index');
 // Route::get('/grade/{id}/student', 'GradeController@show');
 
@@ -53,24 +53,24 @@ Route::get('teacher', '\App\Http\Controllers\TeacherController@index');
 Route::delete('teacher', '\App\Http\Controllers\TeacherController@destroy');
 
 Route::resource('grade', GradeController::class);
-Route::get('grade', '\App\Http\Controllers\GradeController@index');
-Route::delete('grade', '\App\Http\Controllers\GradeController@destroy');
+// Route::get('grade', '\App\Http\Controllers\GradeController@index');
+// Route::delete('grade', '\App\Http\Controllers\GradeController@destroy');
 
 
 
-Route::get('/student', function () {
-    return view('student.index');
-});
+// Route::get('/student', function () {
+//     return view('student.index');
+// });
 
 Route::resource('student', StudentController::class);
 
-Route::get('student', '\App\Http\Controllers\StudentController@index');
-Route::delete('student', '\App\Http\Controllers\StudentController@destroy');
-Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
+// Route::get('/student', '\App\Http\Controllers\StudentController@show');
+// Route::delete('/student', '\App\Http\Controllers\StudentController@destroy');
+// Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
 
 
 
-// Route::get('/student/{gradeid}', '\App\Http\Controllers\StudentController@show');
+// Route::get('/student/{grade_id}', '\App\Http\Controllers\StudentController@show');
 
 
 

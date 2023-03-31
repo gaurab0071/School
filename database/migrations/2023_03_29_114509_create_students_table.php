@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('idnumber');
+            $table->string('idnumber')->unique();
             $table->integer('roll');
             $table->string('name');
             $table->string('parent');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('gender');
             $table->binary('report');
-            $table->foreignId('grade_id');
+            $table->foreignId('grade_id')->references('id')->on('grades');
             $table->timestamps();
         });
     }

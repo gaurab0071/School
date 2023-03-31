@@ -39,42 +39,17 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <div class="card" style="width: 15rem; height: 5rem">
-                            <div class="card-body">
-                                <a href="/student/view
-                                "
-                                    class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade One</a>
+                    @foreach ($grades as $grade)
+                        <div class="col-lg-3 col-6">
+                            <div class="card" style="width: 15rem; height: 5rem">
+                                <div class="card-body">
+                                    <a
+                                        href="/student/view"class="btn btn-primary d-flex aligns-items-center justify-content-center">
+                                        {{ $grade->name }}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="card" style="width: 15rem; height: 5rem">
-                            <div class="card-body">
-                                <a href="/student/view
-                                "
-                                    class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade Two</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="card" style="width: 15rem; height: 5rem">
-                            <div class="card-body">
-                                <a href="/student/view
-                                "
-                                    class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade Two</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="card" style="width: 15rem; height: 5rem">
-                            <div class="card-body">
-                                <a href="/student/view
-                                "
-                                    class="btn btn-primary d-flex aligns-items-center justify-content-center">Grade Two</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

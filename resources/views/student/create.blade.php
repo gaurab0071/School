@@ -12,12 +12,12 @@
 
                             <div class="form-group">
                                 <label for="name">ID Number</label>
-                                <input type="text" id="name" class="form-control" name="idnumber">
+                                <input type="text" id="id" class="form-control" name="idnumber">
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Roll No</label>
-                                <input type="text" id="name" class="form-control" name="roll">
+                                <input type="text" id="roll" class="form-control" name="roll">
                             </div>
 
                             <div class="form-group">
@@ -27,7 +27,7 @@
 
                             <div class="form-group">
                                 <label for="number">Parent's Name</label>
-                                <input type="text" id="name" class="form-control" name="parent">
+                                <input type="text" id="parent" class="form-control" name="parent">
                             </div>
 
                             <div class="form-group">
@@ -50,6 +50,7 @@
                                 </select>
                             </div> --}}
 
+
                             <div class="form-group">
                                 <label for="grade_id">Select Grade</label>
                                 <select id="grade_id" class="form-control" name="grade_id">
@@ -59,7 +60,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
 
                             <div class="form-group">
                                 <label for="section">Gender</label>

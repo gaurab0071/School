@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Grade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
@@ -15,8 +17,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('student.view', compact('students'));
+        $grades = Grade::all();
+        return view('student.index', compact('grades'));
     }
 
 
@@ -28,7 +30,7 @@ class StudentController extends Controller
     public function create()
     {
         $grades = Grade::all();
-        return view ('student.create', compact('grades'));
+        return view('student.create', compact('grades'));
     }
 
     /**
@@ -46,8 +48,17 @@ class StudentController extends Controller
         $student->parent = $request->parent;
         $student->contact = $request->contact;
         $student->address = $request->address;
-        $student->grade = $request->grade;
-
+        $student->gender = $request->gender;
+        if ($request->hasFile('report')) {
+            $file = $request->report;
+            $newName = time() . $file->getClientOriginalName();
+            $file->move('report', $newName);
+            $student->report = "report/$newName";
+        }
+        $student->grade_id = $request->grade_id;
+        $student->save();
+        toast("Record Saved Successfully !", 'success');
+        return redirect()->back();
     }
 
     /**
@@ -56,9 +67,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($grade_id)
     {
-        //
+        $students = Student::where('grade_id', $grade_id)->get();
+        $grade = Grade::find($grade_id);
+        return view('student.view', compact('students', 'grade'));
     }
 
     /**
@@ -92,6 +105,9 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        toast("Record Deleted Successfully!", 'success');
+        return redirect()->back();
     }
 }
