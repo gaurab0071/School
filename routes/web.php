@@ -18,30 +18,30 @@ use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Route::get('/dashboard', function () {
-//     return view('welcome');
-// });
+Route::get('/dashboard', function () {
+    return view('welcome');
+});
 
-// Route::get('/teacher', function () {
-//     return view('teacher.index');
-// });
+Route::get('/teacher', function () {
+    return view('teacher.index');
+});
 
 
-// Route::get('/create', function () {
-//     return view('teacher.create');
-// });
+Route::get('/create', function () {
+    return view('teacher.create');
+});
 
-// Route::get('/grade', function () {
-//     return view('grade.index');
-// });
+Route::get('/grade', function () {
+    return view('grade.index');
+});
 
-// Route::get('/create', function () {
-//     return view('grade.create');
-// });
+Route::get('/create', function () {
+    return view('grade.create');
+});
 // Route::get('/grade/{id}/student', [App\Http\Controllers\StudentController::class, 'index'])->name('student.index');
 // Route::get('/grade/{id}/student', 'GradeController@show');
 
