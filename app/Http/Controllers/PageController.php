@@ -33,10 +33,13 @@ class PageController extends Controller
         return view('grade.index');
     }
 
+    // public function student()
+    // {
+    //     return view('student.index');
+    // }
+
     public function student()
     {
-        return view('student.index');
+        return view('student.view');
     }
-
-
 }

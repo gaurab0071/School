@@ -15,10 +15,13 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $grades = Grade::all();
-        return view('student.index', compact('grades'));
+        $grade_id = null;
+        return view('student.index', compact('grades', 'grade_id'));
     }
 
 
@@ -70,9 +73,10 @@ class StudentController extends Controller
     public function show($grade_id)
     {
         $students = Student::where('grade_id', $grade_id)->get();
-        $grade = Grade::find($grade_id);
-        return view('student.view', compact('students', 'grade'));
+        $grades = Grade::find($grade_id);
+        return view('student.view', compact('students', 'grades'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

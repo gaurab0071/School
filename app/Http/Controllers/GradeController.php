@@ -58,7 +58,7 @@ class GradeController extends Controller
     {
         $grades = Grade::find($grade_id);
         $students = $grades->students;
-        return view('student.view', compact('students'));
+        return view('student.view', compact('students', 'grades'));
     }
 
     /**

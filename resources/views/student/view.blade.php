@@ -33,49 +33,51 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>ID No.</th>
-                                    <th>Roll No.</th>
-                                    <th>Student's Name</th>
-                                    <th>Parent's Name</th>
-                                    <th>Contact</th>
-                                    <th>Address</th>
-                                    <th>Gender</th>
-                                    <th>Report</th>
-                                    {{-- <th>Grade</th> --}}
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($students as $student)
+                        @if (count($students) > 0)
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $student->id }}</td>
-                                        <td>{{ $student->idnumber }}</td>
-                                        <td>{{ $student->roll }}</td>
-                                        <td>{{ $student->name }}</td>
-                                        <td>{{ $student->parent }}</td>
-                                        <td>{{ $student->contact }}</td>
-                                        <td>{{ $student->address }}</td>
-                                        <td>{{ $student->gender }}</td>
-                                        <td><img src="{{ asset($student->report) }}" width="50" alt=""></td>
-                                        {{-- <td>{{ $student->grade->name }}</td> --}}
-
-                                        <td style="display: inline-block;">
-                                            <form action="/student/{{ $student->id }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <a href="/student/{{ $student->id }}/edit" class="badge bg-info">Edit</a>
-                                                <button type="submit" class="badge btn bg-danger">Delete</button>
-                                            </form>
-                                        </td>
+                                        <th>SN</th>
+                                        <th>ID No.</th>
+                                        <th>Roll No.</th>
+                                        <th>Student's Name</th>
+                                        <th>Parent's Name</th>
+                                        <th>Contact</th>
+                                        <th>Address</th>
+                                        <th>Gender</th>
+                                        <th>Report</th>
+                                        <th>Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td>{{ $student->id }}</td>
+                                            <td>{{ $student->idnumber }}</td>
+                                            <td>{{ $student->roll }}</td>
+                                            <td>{{ $student->name }}</td>
+                                            <td>{{ $student->parent }}</td>
+                                            <td>{{ $student->contact }}</td>
+                                            <td>{{ $student->address }}</td>
+                                            <td>{{ $student->gender }}</td>
+                                            <td><img src="{{ asset($student->report) }}" width="50" alt=""></td>
+                                            <td style="display: inline-block;">
+                                                <form action="/student/{{ $student->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <a href="/student/{{ $student->id }}/edit"
+                                                        class="badge bg-info">Edit</a>
+                                                    <button type="submit" class="badge btn bg-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
 
-                        </table>
+                            </table>
+                        @else
+                            <p>No students found.</p>
+                        @endif
                     </div>
                 </div>
             </div>

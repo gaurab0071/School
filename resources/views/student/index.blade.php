@@ -44,7 +44,7 @@
                             <div class="card" style="width: 15rem; height: 5rem">
                                 <div class="card-body">
                                     <a
-                                        href="/student/view"class="btn btn-primary d-flex aligns-items-center justify-content-center">
+                                        href="/student/{{ $grade->id }}/view" class="btn btn-primary d-flex aligns-items-center justify-content-center">
                                         {{ $grade->name }}</a>
                                 </div>
                             </div>

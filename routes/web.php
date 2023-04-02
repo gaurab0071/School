@@ -49,8 +49,8 @@ use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 
 
 Route::resource('teacher', TeacherController::class);
-Route::get('teacher', '\App\Http\Controllers\TeacherController@index');
-Route::delete('teacher', '\App\Http\Controllers\TeacherController@destroy');
+// Route::get('teacher', '\App\Http\Controllers\TeacherController@index');
+// Route::delete('teacher', '\App\Http\Controllers\TeacherController@destroy');
 
 Route::resource('grade', GradeController::class);
 // Route::get('grade', '\App\Http\Controllers\GradeController@index');
@@ -65,6 +65,13 @@ Route::resource('grade', GradeController::class);
 Route::resource('student', StudentController::class);
 
 // Route::get('/student', '\App\Http\Controllers\StudentController@show');
+// Route::get('/grade/{id}/students', [GradeController::class, 'students'])->name('grade.students');
+
+Route::get('/student/{grade_id}/view', [StudentController::class, 'show']);
+
+
+
+
 // Route::delete('/student', '\App\Http\Controllers\StudentController@destroy');
 // Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
 

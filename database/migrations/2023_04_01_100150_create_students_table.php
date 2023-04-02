@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('address');
             $table->string('gender');
             $table->binary('report');
-            $table->foreignId('grade_id')->references('id')->on('grades');
             $table->timestamps();
+            $table->foreignId('grade_id')->references('id')->on('grades');
         });
     }
 
