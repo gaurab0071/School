@@ -86,7 +86,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $students = Student::find($id);
+        $grades = Grade::all();
+        return view ('student.edit', compact('students', 'grades'));
     }
 
     /**
@@ -98,7 +100,24 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = new Student();
+        $student->idnumber = $request->idnumber;
+        $student->roll = $request->roll;
+        $student->name = $request->name;
+        $student->parent = $request->parent;
+        $student->contact = $request->contact;
+        $student->address = $request->address;
+        $student->gender = $request->gender;
+        if ($request->hasFile('report')) {
+            $file = $request->report;
+            $newName = time() . $file->getClientOriginalName();
+            $file->move('report', $newName);
+            $student->report = "report/$newName";
+        }
+        $student->grade_id = $request->grade_id;
+        $student->update();
+        toast("Record Updated Successfully !", 'success');
+        return redirect()->back();
     }
 
     /**

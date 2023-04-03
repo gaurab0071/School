@@ -56,7 +56,8 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-
+        $teachers = Teacher::count();
+        return view ('welcome', compact('teachers'));
     }
 
     /**

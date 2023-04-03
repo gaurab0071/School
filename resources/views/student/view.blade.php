@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Students</h1>
+                        <h1 class="m-0">Grade {{ $grades->name }} Students</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -33,6 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+
                         @if (count($students) > 0)
                             <table class="table">
                                 <thead>
@@ -76,7 +77,7 @@
 
                             </table>
                         @else
-                            <p>No students found.</p>
+                            <h3>No students found.</h3>
                         @endif
                     </div>
                 </div>

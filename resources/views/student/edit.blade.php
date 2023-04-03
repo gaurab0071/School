@@ -46,6 +46,21 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="grade_id">Select Grade</label>
+                    <select id="grade_id" class="form-control" name="grade_id">
+                        @foreach ($grades as $grade)
+                        <option value="{{ $grade->id }}" {{ $grade->id == old('grade_id', $students->grade_id) ? 'selected' : '' }}>
+                            {{ $grade->name }}
+                        </option>
+
+                        @endforeach
+                    </select>
+                </div>
+
+
+
+
+                <div class="form-group">
                     <label for="section">Gender</label>
 
                     <div class="form-check">
@@ -65,6 +80,9 @@
                 <div class="form-group">
                     <label for="section">Report</label>
                     <input type="file" id="section" class="form-control-file" name="report" value="{{$students->report}}">
+                </div>
+                <div class="my-2">
+                    <img src="{{asset ($students->report )}}" width="100" alt="">
                 </div>
 
                 <button type="submit" class="btn btn-success">Update</button>

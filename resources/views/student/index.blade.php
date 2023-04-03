@@ -43,8 +43,8 @@
                         <div class="col-lg-3 col-6">
                             <div class="card" style="width: 15rem; height: 5rem">
                                 <div class="card-body">
-                                    <a
-                                        href="/student/{{ $grade->id }}/view" class="btn btn-primary d-flex aligns-items-center justify-content-center">
+                                    <a href="/student/{{ $grade->id }}/view"
+                                        class="btn btn-primary d-flex aligns-items-center justify-content-center">
                                         {{ $grade->name }}</a>
                                 </div>
                             </div>
@@ -55,7 +55,6 @@
         </div>
     </div>
 @endsection
-
 
 <script>
     function openPdf() {
