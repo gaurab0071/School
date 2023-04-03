@@ -42,4 +42,9 @@ class PageController extends Controller
     {
         return view('student.view');
     }
+
+    public function subject()
+    {
+        return view('subject.index');
+    }
 }

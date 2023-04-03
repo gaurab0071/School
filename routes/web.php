@@ -3,6 +3,7 @@
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as ComponentRoutingRoute;
@@ -39,9 +40,13 @@ Route::get('/grade', function () {
     return view('grade.index');
 });
 
-Route::get('/create', function () {
-    return view('grade.create');
+Route::get('/subject', function () {
+    return view('subject.index');
 });
+
+// Route::get('/create', function () {
+//     return view('grade.create');
+// });
 
 
 Route::resource('teacher', TeacherController::class);
@@ -52,7 +57,7 @@ Route::resource('student', StudentController::class);
 
 Route::get('/student/{grade_id}/view', [StudentController::class, 'show']);
 
-
+Route::resource('subject', SubjectController::class);
 
 
 

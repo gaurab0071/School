@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
+// use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class TeacherController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
-        return view('teacher.index', compact('teachers'));
+        return view ('subject.index');
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +24,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teacher.create');
+        return view ('subject.create');
     }
 
     /**
@@ -38,14 +35,8 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        $teacher = new Teacher();
-        $teacher->name = $request->name;
-        $teacher->contact = $request->contact;
-        $teacher->email = $request->email;
-        $teacher->save();
-        toast('Record saved successfully!','success');
+        // $subject = new Subject();
 
-        return redirect()->back();
     }
 
     /**
@@ -56,7 +47,7 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -67,9 +58,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        $teacher = Teacher::find($id);
-        return view('teacher.edit', compact('teacher'));
-
+        //
     }
 
     /**
@@ -81,13 +70,7 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teacher =  Teacher::find($id);
-        $teacher->name = $request->name;
-        $teacher->contact = $request->contact;
-        $teacher->email = $request->email;
-        $teacher->update();
-        toast('Record updated successfully!','success');
-        return redirect()->back();
+        //
     }
 
     /**
@@ -98,10 +81,6 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        $teacher = Teacher::findOrfail($id);
-        $teacher->delete();
-        toast('Record deleted successfully!','success');
-        return redirect("/teacher");
-
+        //
     }
 }

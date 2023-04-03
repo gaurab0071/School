@@ -30,7 +30,7 @@
 
 
             <!-- add classes button -->
-            <a href="/grade/create" class="mb-2 mx-2 btn btn-info">+ Add new subject</a>
+            <a href="/subject/create" class="mb-2 mx-2 btn btn-info">+ Add new subject</a>
 
             <div class="container">
                 <div class="row">
@@ -46,7 +46,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            @foreach ($grades as $grade)
+                            {{-- @foreach ($grades as $grade)
                                 <tbody>
                                     <tr>
                                         <td>{{ $grade->id }}</td>
@@ -68,7 +68,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            @endforeach
+                            @endforeach --}}
                         </table>
                     </div>
                 </div>
