@@ -30,37 +30,38 @@
             </div>
             <!-- add student button -->
             <a href="/student/create" class="mb-2 mx-2 btn btn-info">+ Add new Student</a>
-        </div>
 
-        <!-- Divider -->
-        {{-- <hr class="mt-1 mb-1" /> --}}
-        <!-- Divider end -->
 
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    @foreach ($grades as $grade)
-                        <div class="col-lg-3 col-6">
-                            <div class="card" style="width: 15rem; height: 5rem">
-                                <div class="card-body">
-                                    <a href="/student/{{ $grade->id }}/view"
-                                        class="btn btn-primary d-flex aligns-items-center justify-content-center">
-                                        {{ $grade->name }}</a>
+            <!-- Divider -->
+            {{-- <hr class="mt-1 mb-1" /> --}}
+            <!-- Divider end -->
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        @foreach ($grades as $grade)
+                            <div class="col-lg-3 col-6">
+                                <div class="card" style="width: 15rem; height: 5rem">
+                                    <div class="card-body">
+                                        <a href="/student/{{ $grade->id }}/view"
+                                            class="btn btn-primary d-flex aligns-items-center justify-content-center">
+                                            {{ $grade->name }}</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 
-<script>
+{{-- <script>
     function openPdf() {
         var iframe = document.getElementById('pdf-iframe');
         iframe.src = '/path/to/your/pdf'; // Replace with the path to your PDF file
         iframe.style.display = 'block';
         iframe.requestFullscreen(); // Make the iframe full screen
     }
-</script>
+</script> --}}

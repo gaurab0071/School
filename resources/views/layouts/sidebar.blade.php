@@ -28,7 +28,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
           <li class="nav-item">
-            <a href="/dashboard" class="nav-link active">
+            <a href="/dashboard" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -38,7 +38,7 @@
 
           <li class="nav-item">
             <a href="/teacher" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+                <i class="fa-solid fa-chalkboard-user"></i>
               <p>
                 Teachers
               </p>
@@ -106,6 +106,13 @@
     <!-- /.sidebar -->
 </aside>
 
-
+<script>
+    $(document).ready(function () {
+        var url = window.location;
+        $('ul.nav-sidebar a').filter(function() {
+            return this.href == url;
+        }).addClass('active');
+    });
+    </script>
 
 
