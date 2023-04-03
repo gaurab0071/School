@@ -33,12 +33,12 @@
 
 
             <!-- Divider -->
-            {{-- <hr class="mt-1 mb-1" /> --}}
+            <hr class="mt-1 mb-2" />
             <!-- Divider end -->
 
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row ">
                         @foreach ($grades as $grade)
                             <div class="col-lg-3 col-6">
                                 <div class="card" style="width: 15rem; height: 5rem">
