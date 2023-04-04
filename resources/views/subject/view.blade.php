@@ -6,12 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Grade {{ $grades->name }} Students</h1>
+                        <h1 class="m-0">Grade {{ $grades->name }} Subjects</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">Students</li>
+                            <li class="breadcrumb-item active">Subjects</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -28,43 +28,36 @@
             </nav>
 
             <!-- add teacher button -->
-            <a href="/student" class="mb-2 mx-2 btn btn-primary">Back</a>
+            <a href="/subject" class="mb-2 mx-2 btn btn-primary">Back</a>
 
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
 
-                        @if (count($students) > 0)
+                        @if (count($subject) > 0)
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID No.</th>
-                                        <th>Roll No.</th>
-                                        <th>Student's Name</th>
-                                        <th>Parent's Name</th>
-                                        <th>Contact</th>
-                                        <th>Address</th>
-                                        <th>Gender</th>
-                                        <th>Report</th>
+                                        <th>Book No.</th>
+                                        <th>Book Name</th>
+                                        <th>Publication</th>
+                                        <th>Academic Year</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($students as $student)
+                                    @foreach ($subject as $subject)
                                         <tr>
-                                            <td>{{ $student->idnumber }}</td>
-                                            <td>{{ $student->roll }}</td>
-                                            <td>{{ $student->name }}</td>
-                                            <td>{{ $student->parent }}</td>
-                                            <td>{{ $student->contact }}</td>
-                                            <td>{{ $student->address }}</td>
-                                            <td>{{ $student->gender }}</td>
-                                            <td><img src="{{ asset($student->report) }}" width="50" alt=""></td>
+                                            
+                                            <td>{{ $subject->book_num }}</td>
+                                            <td>{{ $subject->name }}</td>
+                                            <td>{{ $subject->publication }}</td>
+                                            <td>{{ $subject->academic_year }}</td>
                                             <td style="display: inline-block;">
-                                                <form action="/student/{{ $student->id }}" method="post">
+                                                <form action="/subject/{{ $subject->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="/student/{{ $student->id }}/edit"
+                                                    <a href="/subject/{{ $subject->id }}/edit"
                                                         class="badge bg-info">Edit</a>
                                                     <button type="submit" class="badge btn bg-danger">Delete</button>
                                                 </form>
@@ -75,7 +68,7 @@
 
                             </table>
                         @else
-                            <h3>No students found.</h3>
+                            <h3>No subjects found.</h3>
                         @endif
                     </div>
                 </div>

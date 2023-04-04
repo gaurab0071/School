@@ -16,6 +16,7 @@
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
+        </div><!-- /.content-header -->
 
             <!-- search bar  -->
             <div class="container-fluid">
@@ -40,9 +41,9 @@
                 <div class="container-fluid">
                     <div class="row ">
                         @foreach ($grades as $grade)
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3 col-sm-12">
                                 <div class="card" style="width: 15rem; height: 5rem">
-                                    <div class="card-body">
+                                    <div class="col-12 card-body ">
                                         <a href="/student/{{ $grade->id }}/view"
                                             class="btn btn-primary d-flex aligns-items-center justify-content-center">
                                             {{ $grade->name }}</a>
@@ -53,7 +54,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 @endsection
 

@@ -32,7 +32,7 @@
             <!-- add classes button -->
             <a href="/grade/create" class="mb-2 mx-2 btn btn-info">+ Add new classes</a>
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table">

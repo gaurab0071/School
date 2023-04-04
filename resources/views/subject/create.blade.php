@@ -31,27 +31,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="section">Contact Number</label>
-                                <input type="text" id="section" class="form-control" name="contact">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="section">Address</label>
-                                <input type="text" id="section" class="form-control" name="address">
-                            </div>
-
-
-                            {{-- <div class="form-group">
-                                <label for="grade">Class</label>
-                                <select name="grade" class="form-control" required>
-                                    @foreach ($grades as $grade)
-                                    <option value="{{ $grades }}">{{ $grade }}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
-
-
-                            <div class="form-group">
                                 <label for="grade_id">Select Grade</label>
                                 <select id="grade_id" class="form-control" name="grade_id">
                                     @foreach ($grades as $grade)
@@ -59,28 +38,6 @@
 
                                     @endforeach
                                 </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="section">Gender</label>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Male
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        female
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="section">Report</label>
-                                <input type="file" id="section" class="form-control-file" name="report">
                             </div>
 
                             <button type="submit" class="btn btn-success">Save</button>

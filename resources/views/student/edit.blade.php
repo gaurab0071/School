@@ -17,32 +17,32 @@
 
                     <div class="form-group">
                         <label for="name">ID Number</label>
-                        <input type="text" id="name" class="form-control" name="idnumber" value="{{$students->idnumber}}">
+                        <input type="text" id="id" class="form-control" name="idnumber" value="{{$students->idnumber}}">
                     </div>
 
                 <div class="form-group">
                     <label for="name">Roll No</label>
-                    <input type="text" id="name" class="form-control" name="roll" value="{{$students->roll}}">
+                    <input type="text" id="roll" class="form-control" name="roll" value="{{$students->roll}}">
                 </div>
 
                 <div class="form-group">
                     <label for="teacher">Student's Name</label>
-                    <input type="text" id="teacher" class="form-control" name="name" value="{{$students->name}}">
+                    <input type="text" id="name" class="form-control" name="name" value="{{$students->name}}">
                 </div>
 
                 <div class="form-group">
                     <label for="number">Parent's Name</label>
-                    <input type="text" id="number" class="form-control" name="parent" value="{{$students->parent}}">
+                    <input type="text" id="parent" class="form-control" name="parent" value="{{$students->parent}}">
                 </div>
 
                 <div class="form-group">
                     <label for="section">Parent's Contact</label>
-                    <input type="text" id="section" class="form-control" name="contact" value="{{$students->contact}}">
+                    <input type="text" id="contact" class="form-control" name="contact" value="{{$students->contact}}">
                 </div>
 
                 <div class="form-group">
                     <label for="section">Address</label>
-                    <input type="text" id="section" class="form-control" name="address" value="{{$students->address}}">
+                    <input type="text" id="address" class="form-control" name="address" value="{{$students->address}}">
                 </div>
 
                 <div class="form-group">
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="section">Report</label>
+                    <label for="section">image</label>
                     <input type="file" id="section" class="form-control-file" name="report" value="{{$students->report}}">
                 </div>
                 <div class="my-2">

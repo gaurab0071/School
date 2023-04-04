@@ -88,7 +88,7 @@ class StudentController extends Controller
     {
         $students = Student::find($id);
         $grades = Grade::all();
-        return view ('student.edit', compact('students', 'grades'));
+        return view('student.edit', compact('students', 'grades'));
     }
 
     /**
@@ -100,7 +100,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = new Student();
+        $student = Student::findOrFail($id);
         $student->idnumber = $request->idnumber;
         $student->roll = $request->roll;
         $student->name = $request->name;

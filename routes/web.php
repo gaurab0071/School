@@ -59,6 +59,8 @@ Route::get('/student/{grade_id}/view', [StudentController::class, 'show']);
 
 Route::resource('subject', SubjectController::class);
 
+Route::get('/subject/{grade_id}/view', [SubjectController::class, 'show']);
+
 
 
 

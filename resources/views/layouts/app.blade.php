@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css')}}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-ZUztl6uJ7+UvdtQEpFVhHQrZTfT6nt0+6ezLmV7sUyfA+V7KUf/9ju0J/nnq3bLOH7pJhEtNfLw0cn0yFQV1cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-ZUztl6uJ7+UvdtQEpFVhHQrZTfT6nt0+6ezLmV7sUyfA+V7KUf/9ju0J/nnq3bLOH7pJhEtNfLw0cn0yFQV1cw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->

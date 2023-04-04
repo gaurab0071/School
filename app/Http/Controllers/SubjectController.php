@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-// use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Grade;
+use App\Models\Subject;
+use Psy\Command\WhereamiCommand;
 
 class SubjectController extends Controller
 {
@@ -14,7 +17,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view ('subject.index');
+        $grades = Grade::all();
+        $grade_id = null;
+        return view ('subject.index',compact('grades'));
     }
 
     /**
@@ -24,7 +29,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view ('subject.create');
+        $grades = Grade::all();
+        return view ('subject.create', compact('grades'));
     }
 
     /**
@@ -35,7 +41,15 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        // $subject = new Subject();
+        $subject = new Subject();
+        $subject->book_num = $request->book_num;
+        $subject->name = $request->name;
+        $subject->publication = $request->publication;
+        $subject->academic_year = $request->academic_year;
+        $subject->grade_id = $request->grade_id;
+        $subject->save();
+        toast("Subject Saved Successfully!", 'success');
+        return redirect()->back();
 
     }
 
@@ -45,9 +59,12 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($grade_id)
     {
-        //
+        $subject = Subject::where('grade_id', $grade_id)->get();
+        $grades = Grade::find($grade_id);
+        return view('subject.view',compact('subject', 'grades'));
+
     }
 
     /**
@@ -58,7 +75,10 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subjects = Subject::find($id);
+        $grades = Grade::all();
+        return view('subject.edit', compact('subjects', 'grades'));
+
     }
 
     /**
@@ -70,7 +90,15 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subject = Subject::findOrFail($id);
+        $subject->book_num = $request->book_num;
+        $subject->name = $request->name;
+        $subject->publication = $request->publication;
+        $subject->academic_year = $request->academic_year;
+        $subject->grade_id = $request->grade_id;
+        $subject->update();
+        toast("Subject Updated Successfully!", 'success');
+        return redirect()->back();
     }
 
     /**
