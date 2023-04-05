@@ -62,6 +62,8 @@ class GradeController extends Controller
         return view('student.view', compact('students', 'grades', 'subjects'));
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *

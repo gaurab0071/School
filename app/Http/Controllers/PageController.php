@@ -43,8 +43,13 @@ class PageController extends Controller
         return view('student.view');
     }
 
-    public function subject()
+    // public function subject()
+    // {
+    //     return view('subject.index');
+    // }
+
+    public function student_report()
     {
-        return view('subject.index');
+        return view('student_report.index');
     }
 }

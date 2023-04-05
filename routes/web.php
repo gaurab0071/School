@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
@@ -44,9 +45,7 @@ Route::get('/subject', function () {
     return view('subject.index');
 });
 
-// Route::get('/create', function () {
-//     return view('grade.create');
-// });
+Route::get('student_report', [PageController::class, 'student_report']);
 
 
 Route::resource('teacher', TeacherController::class);
@@ -58,8 +57,10 @@ Route::resource('student', StudentController::class);
 Route::get('/student/{grade_id}/view', [StudentController::class, 'show']);
 
 Route::resource('subject', SubjectController::class);
-
 Route::get('/subject/{grade_id}/view', [SubjectController::class, 'show']);
+Route::get('/subject/{teacher_id}/view', [SubjectController::class, 'show']);
+
+
 
 
 

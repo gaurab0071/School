@@ -34,25 +34,26 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        @if (count($subject) > 0)
+                        @if (count($subjects) > 0)
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Book No.</th>
+                                        <th>Subject Code</th>
                                         <th>Book Name</th>
                                         <th>Publication</th>
                                         <th>Academic Year</th>
+                                        <th>Subject Teacher</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($subject as $subject)
+                                    @foreach ($subjects as $subject)
                                         <tr>
-                                            
-                                            <td>{{ $subject->book_num }}</td>
+                                            <td>{{ $subject->subject_code }}</td>
                                             <td>{{ $subject->name }}</td>
                                             <td>{{ $subject->publication }}</td>
                                             <td>{{ $subject->academic_year }}</td>
+                                            <td>{{ $subject->teacher->name }}</td>
                                             <td style="display: inline-block;">
                                                 <form action="/subject/{{ $subject->id }}" method="post">
                                                     @csrf

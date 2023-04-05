@@ -54,9 +54,11 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($teacher_id)
     {
-        
+        $teachers = Teacher::find($teacher_id);
+        $subjects = $teachers->subjects;
+        return view('subject.view', compact('teachers', 'subjects'));
     }
 
     /**

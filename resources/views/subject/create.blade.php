@@ -11,8 +11,8 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="name">Book No.</label>
-                                <input type="text" id="book_num" class="form-control" name="book_num">
+                                <label for="name">Subject Code</label>
+                                <input type="text" id="subject_code" class="form-control" name="subject_code">
                             </div>
 
                             <div class="form-group">
@@ -28,6 +28,16 @@
                             <div class="form-group">
                                 <label for="number">Academic Year</label>
                                 <input type="text" id="year" class="form-control" name="academic_year">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="teacher_id">Select Teacher</label>
+                                <select id="teacher_id" class="form-control" name="teacher_id">
+                                    @foreach ($teachers as $teacher)
+                                    <option value="{{ $teacher->id}}">{{ $teacher->name}}</option>
+
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">

@@ -10,12 +10,22 @@ class Subject extends Model
     use HasFactory;
 
     /**
-     * Get all of the comments for the Subject
+     * Get the user that owns the Subject
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function grade()
     {
         return $this->belongsTo(Grade::class, 'grade_id', 'id');
+    }
+
+    /**
+     * Get the user that owns the Subject
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
     }
 }
