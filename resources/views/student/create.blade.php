@@ -40,21 +40,19 @@
                                 <input type="text" id="section" class="form-control" name="address">
                             </div>
 
-
                             <div class="form-group">
                                 <label for="grade_id">Select Grade</label>
-
-                                <select id="grade_id" class="form-control" name="grade_id" data-search="true" data-silent-initial-value-set="true">
+                                <select id="grade_id" class="form-control" name="grade_id" data-search="true"
+                                    data-silent-initial-value-set="true">
+                                    <option value="">Select</option>
                                     @foreach ($grades as $grade)
-                                    <option value="{{ $grade->id}}">{{ $grade->name}}</option>
-
+                                        <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="section">Gender</label>
-
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">

@@ -1,29 +1,63 @@
 @extends('layouts.app')
 @section('content')
     <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
         <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
+            <div class="container">
+                <div class="row mb-1">
                     <div class="col-sm-6">
-                        <h1 class="m-0 mb-2"><b>Students Report</b></h1>
-                        <a href="/student_report/create" class="btn btn-info">+ Make Report</a>
+                        <h1 class="m-0">Student's Report</h1>
                     </div><!-- /.col -->
-
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">Students Report</li>
+                            <li class="breadcrumb-item active">Student's Report</li>
                         </ol>
                     </div><!-- /.col -->
+
+                    <!--Select text -->
+                    <div class="col-sm-6">
+                        <p class="m-0">Please select a grade to make report</p>
+                    </div>
+
+                    <!-- search bar  -->
+                    <div class="col-sm-6">
+                        <nav class="navbar-light bg-light float-sm-right">
+                            <form class="d-flex ">
+                                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </nav>
+                    </div>
                 </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div><!-- container -->
         </div><!-- /.content-header -->
+
+<!-- ------------------------------------------------SELECT GRADE OPTIONS--------------------------------------------------- -->
+
+        <div class="container-fluid">
+            <div class="content">
+                <div class="row ">
+                    @foreach ($grades as $grade)
+                        <div class="col-lg-3 col-sm-12">
+                            <div class=" card-body">
+                                <a href="/student_report/create"
+                                    class="btn btn-primary d-flex aligns-items-center justify-content-center">
+                                    {{ $grade->name }}</a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+<!-- ---------------------------------------------------STUDENT REPORT SHOW------------------------------------------------ -->
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -41,4 +75,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection

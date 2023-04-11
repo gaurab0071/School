@@ -22,7 +22,7 @@ class SubjectController extends Controller
         $grade_id = null;
         $teachers = Teacher::all();
         $teacher_id = null;
-        return view ('subject.index',compact('grades', 'teachers'));
+        return view('subject.index',compact('grades', 'teachers'));
     }
 
     /**
@@ -34,7 +34,7 @@ class SubjectController extends Controller
     {
         $grades = Grade::all();
         $teachers = Teacher::all();
-        return view ('subject.create', compact('grades', 'teachers'));
+        return view('subject.create', compact('grades', 'teachers'));
     }
 
     /**

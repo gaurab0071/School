@@ -48,8 +48,5 @@ class PageController extends Controller
     //     return view('subject.index');
     // }
 
-    public function student_report()
-    {
-        return view('student_report.index');
-    }
+
 }
