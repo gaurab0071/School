@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
@@ -61,7 +62,7 @@ Route::get('/subject/{teacher_id}/view', [SubjectController::class, 'show']);
 Route::resource('student_report', ReportController::class);
 // Route::get('/student_report/{grade_id}/create', [StudentController::class, 'create']);
 
-
+Route::resource('attendance', AttendanceController::class);
 
 
 

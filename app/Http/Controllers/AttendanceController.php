@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Grade;
-use App\Models\Report;
-use App\Models\Subject;
+use Illuminate\Http\Attendance;
 
-class ReportController extends Controller
+class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $grades = Grade::all();
-        return view('student_report.index', compact('grades'));
+        return view('attendance.index');
     }
 
     /**
@@ -27,10 +24,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        $grades = Grade::all();
-        $selectedGrade = $grades->first();
-        $subjects = $selectedGrade->subjects; // retrieve the subjects for the selected grade
-        return view('student_report.create', compact('grades', 'subjects'));
+        
     }
 
     /**
@@ -41,7 +35,7 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -50,13 +44,9 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($grade_id)
+    public function show($id)
     {
-        // $subjects = Subject::where('grade_id', $grade_id)
-        //     ->get();
-        // $grades = Grade::find($grade_id);
-        // $subjects = $grades->subjects;
-        // return view('subject.view', compact('subjects', 'grades'));
+        //
     }
 
     /**
