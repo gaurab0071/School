@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     use HasFactory;
+
+    public function grade()
+    {
+        return $this->belongsTo(Attendance::class);
+    }
 }

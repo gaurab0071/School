@@ -63,6 +63,7 @@ Route::resource('student_report', ReportController::class);
 // Route::get('/student_report/{grade_id}/create', [StudentController::class, 'create']);
 
 Route::resource('attendance', AttendanceController::class);
+Route::get('/subject/{grade_id}/view', [AttendanceController::class, 'show']);
 
 
 

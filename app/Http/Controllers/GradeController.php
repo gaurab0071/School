@@ -103,9 +103,9 @@ class GradeController extends Controller
      */
     public function destroy($id)
     {
-        $grade = Grade::findOrfail($id);
-        $grade->delete();
-        toast("Record Deleted Successfully!", 'success');
-        return redirect('/grade');
+        // $grade = Grade::findOrfail($id);
+        // $grade->delete();
+        // toast("Record Deleted Successfully!", 'success');
+        // return redirect('/grade');
     }
 }

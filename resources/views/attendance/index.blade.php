@@ -33,7 +33,7 @@
             </div><!-- container -->
         </div><!-- /.content-header -->
 
-<!-- ------------------------------------------------SELECT GRADE OPTIONS--------------------------------------------------- -->
+        <!-- ------------------------------------------------SELECT GRADE OPTIONS--------------------------------------------------- -->
 
         {{-- <div class="container-fluid">
             <div class="content">
@@ -51,19 +51,20 @@
             </div>
         </div> --}}
 
-<!----------------------------------------------------------------- VIEW ATTENDANCE---------------------------------- -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Student Name</th>
-                    <th>Grade</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-        </table>
+        <!----------------------------------------------------------------- VIEW ATTENDANCE---------------------------------- -->
+        @foreach ($grades as $grade)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Grade</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+            </table>
+        @endforeach
 
 
 

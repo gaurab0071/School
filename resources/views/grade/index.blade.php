@@ -57,9 +57,10 @@
                                         <td style="display: inline-block;">
                                             <form action="/grade/{{ $grade->id }}" method="post">
                                                 @csrf
-                                                @method('delete')
+                                                {{-- @method('delete') --}}
                                                 <a href="/grade/{{ $grade->id }}/edit" class="badge bg-info">Edit</a>
-                                                <button type="submit" class="badge btn bg-danger">Delete</button>
+                                                <a href="/attendance/{{ $grade->id }}/index" class="badge bg-info">View</a>
+                                                {{-- <button type="submit" class="badge btn bg-danger">View</button> --}}
                                             </form>
                                         </td>
                                     </tr>

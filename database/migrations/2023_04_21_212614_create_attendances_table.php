@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('student_id');
+            $table->boolean('status');
+            $table->date('date');
+            $table->string('comment');
             $table->timestamps();
+            $table->foreignId('grade_id')->references('id')->on('grades');
         });
     }
 

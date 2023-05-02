@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use Illuminate\Http\Request;
-use Illuminate\Http\Attendance;
+use App\Models\Student;
+
 
 class AttendanceController extends Controller
 {
@@ -14,6 +16,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
+
         return view('attendance.index');
     }
 
@@ -24,7 +27,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        
+        return view('attendance.create');
     }
 
     /**
@@ -35,7 +38,14 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-
+        $attendance = new Attendance;
+        $attendance->student_id = $request->student_id;
+        $attendance->date = $request->date;
+        $attendance->comment = $request->comment;
+        $attendance->status = $request->status;
+        $attendance->save();
+        toast("Record Saved Successfully !", 'success');
+        return redirect()->back();
     }
 
     /**
@@ -46,7 +56,7 @@ class AttendanceController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('attendance.index');
     }
 
     /**
