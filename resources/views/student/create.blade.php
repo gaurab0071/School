@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="content-wrapper">
-        <div class="container">
+        <div class="containerfluid">
             <div class="row">
                 <div class="col-md-12">
 
                     <div class="card-body">
-                        <a href="/student" class="mb-2 mx-2 btn btn-primary">Back</a>
+                        <a href="/student" class="mb-2 btn btn-primary">Back</a>
                         <form action="/student" method="post" enctype="multipart/form-data">
                             @csrf
 

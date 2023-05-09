@@ -52,11 +52,7 @@ class ReportController extends Controller
      */
     public function show($grade_id)
     {
-        // $subjects = Subject::where('grade_id', $grade_id)
-        //     ->get();
-        // $grades = Grade::find($grade_id);
-        // $subjects = $grades->subjects;
-        // return view('subject.view', compact('subjects', 'grades'));
+        
     }
 
     /**

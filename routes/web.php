@@ -9,6 +9,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 
 /*
@@ -63,7 +64,14 @@ Route::resource('student_report', ReportController::class);
 // Route::get('/student_report/{grade_id}/create', [StudentController::class, 'create']);
 
 Route::resource('attendance', AttendanceController::class);
-Route::get('/subject/{grade_id}/view', [AttendanceController::class, 'show']);
+Route::get('/attendance/{grade_id}/index', [AttendanceController::class, 'show']);
+Route::get('/attendance/{grade_id}/create', [AttendanceController::class, 'store']);
+
+Route::get('/get-subjects/{gradeId}', function($gradeId) {
+    $subjects = DB::table('subjects')->where('grade_id', $gradeId)->pluck('name', 'id');
+    return json_encode($subjects);
+});
+
 
 
 

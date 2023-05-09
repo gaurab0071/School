@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Grade;
 
 
 class AttendanceController extends Controller
@@ -16,7 +17,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-
+        
         return view('attendance.index');
     }
 
@@ -27,6 +28,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
+        
         return view('attendance.create');
     }
 
@@ -40,9 +42,11 @@ class AttendanceController extends Controller
     {
         $attendance = new Attendance;
         $attendance->student_id = $request->student_id;
+        $attendance->name = $request->name;
         $attendance->date = $request->date;
         $attendance->comment = $request->comment;
         $attendance->status = $request->status;
+        $attendance->grade_id = $request->grade_id;
         $attendance->save();
         toast("Record Saved Successfully !", 'success');
         return redirect()->back();
@@ -54,9 +58,11 @@ class AttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($grade_id)
     {
-        return view('attendance.index');
+        $attendances = Attendance::where('grade_id', $grade_id)->get();
+        $grades = Grade::find($grade_id);
+        return view('attendance.index',compact('grades', 'attendances'));
     }
 
     /**

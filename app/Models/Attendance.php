@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Attendance extends Model
+class attendance extends Model
 {
     use HasFactory;
 
     public function grade()
     {
-        return $this->belongsTo(Attendance::class);
+        return $this->belongsTo(Grade::class);
     }
 }
