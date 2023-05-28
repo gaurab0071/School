@@ -64,8 +64,7 @@
                                         @csrf
                                         {{-- @method('delete') --}}
                                         <a href="/attendance/{{ $grade->id }}/index" class="badge bg-primary">View</a>
-                                        <a href="/grade/{{ $grade->id }}/edit" class="badge bg-info">Edit</a>
-                                    </form>
+                                        <a href="/grade/{{ $grade->id }}/edit" class="badge bg-info">Edit</a>                                    </form>
                                 </td>
                             </tr>
                         </tbody>

@@ -9,7 +9,6 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 
 /*
@@ -31,22 +30,6 @@ Route::get('/dashboard', function () {
     return view('welcome');
 });
 
-// Route::get('/teacher', function () {
-//     return view('teacher.index');
-// });
-
-
-// Route::get('/create', function () {
-//     return view('teacher.create');
-// });
-
-// Route::get('/grade', function () {
-//     return view('grade.index');
-// });
-
-// Route::get('/subject', function () {
-//     return view('subject.index');
-// });
 
 Route::resource('teacher', TeacherController::class);
 
@@ -61,16 +44,12 @@ Route::get('/subject/{grade_id}/view', [SubjectController::class, 'show']);
 Route::get('/subject/{teacher_id}/view', [SubjectController::class, 'show']);
 
 Route::resource('student_report', ReportController::class);
-// Route::get('/student_report/{grade_id}/create', [StudentController::class, 'create']);
 
-Route::resource('attendance', AttendanceController::class);
-Route::get('/attendance/{grade_id}/index', [AttendanceController::class, 'show']);
-Route::get('/attendance/{grade_id}/create', [AttendanceController::class, 'store']);
 
-Route::get('/get-subjects/{gradeId}', function($gradeId) {
-    $subjects = DB::table('subjects')->where('grade_id', $gradeId)->pluck('name', 'id');
-    return json_encode($subjects);
-});
+
+
+
+
 
 
 

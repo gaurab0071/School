@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    public function grade()
+    public function student()
     {
-        return $this->belongsTo(Grade::class, 'grade_id', 'id');
+        return $this->belongsTo(student::class, 'grade_id', 'id');
     }
 }
