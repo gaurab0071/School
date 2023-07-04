@@ -1,15 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="content-wrapper">
-        <div class="containerfluid">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="card-body">
                         <a href="/student" class="mb-2 btn btn-primary">Back</a>
                         <form action="/student" method="post" enctype="multipart/form-data">
                             @csrf
-
                             <div class="form-group">
                                 <label for="name">ID Number</label>
                                 <input type="text" id="id" class="form-control" name="idnumber">

@@ -53,7 +53,7 @@
                                 @csrf
                                 @method('delete')
                                 <a href="/student/{{$grade->id}}/view" class="badge btn badge-primary">View</a>
-                                <a href="/attendance/{{ $grade->id }}/create" class="badge bg-info">Attendance</a>
+                                {{-- <a href="/attendance/{{ $grade->id }}/index" class="badge bg-info">Attendance</a> --}}
                                 <button type="submit" class="badge btn badge-danger">Delete</button>
 
                             </form>

@@ -10,6 +10,7 @@ class attendance extends Model
     use HasFactory;
 
     protected $fillable = ['date', 'student_id', 'status', 'grade_id'];
+    
     public function grade()
     {
         return $this->belongsTo(Grade::class, 'grade_id', 'id');
@@ -19,5 +20,4 @@ class attendance extends Model
     {
         return $this->belongsTo(student::class, 'student_id', 'id');
     }
-
 }

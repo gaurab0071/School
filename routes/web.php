@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\GradeController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ReportController;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Route as ComponentRoutingRoute;
@@ -22,8 +24,8 @@ use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/layouts/login', function () {
+    return view('layouts.login');
 });
 
 Route::get('/dashboard', function () {
@@ -36,8 +38,16 @@ Route::resource('teacher', TeacherController::class);
 Route::resource('grade', GradeController::class);
 
 Route::resource('student', StudentController::class);
-
 Route::get('/student/{grade_id}/view', [StudentController::class, 'show']);
+
+
+Route::resource('attendance', AttendanceController::class);
+Route::get('/attendance/{grade_id}/view', [AttendanceController::class, 'show']);
+Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
+Route::post('/attendance/{grade}', [AttendanceController::class, 'store']);
+
+
+
 
 Route::resource('subject', SubjectController::class);
 Route::get('/subject/{grade_id}/view', [SubjectController::class, 'show']);
@@ -50,7 +60,6 @@ Route::resource('student_report', ReportController::class);
 
 
 
+Auth::routes();
 
-
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

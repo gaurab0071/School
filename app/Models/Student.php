@@ -12,4 +12,9 @@ class Student extends Model
     {
         return $this->belongsTo(student::class, 'grade_id', 'id');
     }
+
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class, 'idnumber', 'idnumber');
+    }
 }
