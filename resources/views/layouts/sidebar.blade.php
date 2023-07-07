@@ -1,3 +1,4 @@
+@if(auth()->check())
 <div class="container">
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-1">
@@ -14,9 +15,11 @@
                 <div class="image">
                     <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
+
                 <div class="info">
-                    <a href="#" class="d-block">Garima Bhattarai</a>
+                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
+
             </div>
 
 
@@ -99,23 +102,25 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                        <a href="/auth/login" class="nav-link" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="nav-icon fas fa-th"></i>
-                            {{ __('Logout') }}    
+                            {{ __('Logout') }}
                         </a>
-                        
+
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </li>
-                    
+
                 </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
+            </nav><!-- /.sidebar-menu -->
+        </div><!-- /.sidebar -->
     </aside>
 </div>
+@else
+<!-- Include the login view when the user is not logged in -->
+@include('auth.login')
+@endif
 
 <script>
     $(document).ready(function() {

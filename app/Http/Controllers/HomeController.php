@@ -23,14 +23,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $role = Auth::user()->role;
-        if($role == "admin"){
-            return view('layouts.app');
-        }else if($role== 'customer'){
-            return view('layouts.app');
-        }else{
-            return redirect("layouts.login");
-        }
+{
+    if (auth()->check()) {
+        return redirect("/dashboard");
+    } else {
+        return redirect("login");
     }
+}
 }

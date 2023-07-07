@@ -95,6 +95,7 @@ class AuthenticateSession implements AuthenticatesSessions
         $request->session()->flush();
 
         throw new AuthenticationException('Unauthenticated.', [$this->auth->getDefaultDriver()]);
+        
     }
 
     /**

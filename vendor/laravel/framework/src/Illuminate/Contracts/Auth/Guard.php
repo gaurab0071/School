@@ -10,6 +10,7 @@ interface Guard
      * @return bool
      */
     public function check();
+    
 
     /**
      * Determine if the current user is a guest.

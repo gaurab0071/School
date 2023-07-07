@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -24,14 +24,15 @@ use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 |
 */
 
-Route::get('/layouts/login', function () {
-    return view('layouts.login');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('teacher', TeacherController::class);
 
@@ -56,10 +57,7 @@ Route::get('/subject/{teacher_id}/view', [SubjectController::class, 'show']);
 Route::resource('student_report', ReportController::class);
 
 
-
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
