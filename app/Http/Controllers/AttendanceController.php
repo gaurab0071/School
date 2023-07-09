@@ -47,19 +47,22 @@ class AttendanceController extends Controller
         $date = $request->input('date');
         $statuses = $request->input('status');
         $comments = $request->input('comment');
-        
 
-        foreach ($statuses as $studentId => $status) {
-            $attendance = new Attendance();
-            $attendance->date = $date;
-            $attendance->idnumber = $studentId;
-            $attendance->status = $status;
-            $attendance->comment = $comments[$studentId] ?? null;
-            $attendance->save();
-            toast("Record Saved Successfully !", 'success');
+        if ($statuses && is_array($statuses)) {
+            foreach ($statuses as $studentId => $status) {
+                $attendance = new Attendance();
+                $attendance->date = $date;
+                $attendance->idnumber = $studentId;
+                $attendance->status = $status;
+                $attendance->comment = $comments[$studentId] ?? null;
+                $attendance->save();
+                toast("Record Saved Successfully !", 'success');
+            }
         }
+
         return redirect()->back()->with('success', 'Attendance saved successfully!');
     }
+
 
     /**
      * Display the specified resource.
@@ -67,17 +70,19 @@ class AttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($grade_id)
+    public function show($grade_id, Request $request)
     {
+        $date = $request->input('date') ?? Attendance::latest('date')->value('date');
         $students = Student::where('grade_id', $grade_id)->get();
         foreach ($students as $student) {
-            $attendance = Attendance::whereIn('idnumber', $student->pluck('id'))->get();
+            $attendance = Attendance::where('idnumber', $student->id)->where('date', $date);
             $student->attendance = $attendance;
         }
         $grades = Grade::find($grade_id);
-        
-        return view('attendance.view', compact('students', 'grades', 'attendance',));
+        $attendance = Attendance::all();
+        return view('attendance.view', compact('students', 'grades', 'date', 'attendance'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

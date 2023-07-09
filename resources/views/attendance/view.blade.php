@@ -27,10 +27,26 @@
 
     <!-- ----------------------------------MAin COntents-------------------------------- -->
 
-    
+    <form class="d-flex" method="GET" action="/attendance/{{ $grades->id}}/view" enctype="multipart/form-data">
+        <div class="d-flex col-sm-4 mb-2">
+            <input type="date" class="form-control d-flex" for="date" name="date" id="date" value="{{ $date }}" required>
+            <button class="btn btn-outline-success mx-2" type="submit">Search</button>
+            @if(request()->has('date'))
+            <button class="btn btn-outline-primary mx-1" type="button" onclick="clearSearch()">Clear</button>
+            @endif
+        </div>
+    </form>
 
     <div class="container-fluid">
+        <div class="container-fluid text-center">
+            <h1 class="m-0">Attendance of {{ $date }}</h1>
+        </div>
         <div class="table-responsive">
+            @if ($attendance->isEmpty() && $search)
+            <h3>No attendance recorded for '{{ $search }}'.</h3>
+            @elseif ($attendance->isEmpty())
+            <p>No attendance found.</p>
+            @else
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -46,26 +62,31 @@
                         <td>{{ $student->idnumber }}</td>
                         <td>{{ $student->name }}</td>
                         <td>
-                            @foreach($student->attendance as $attendance)
-                            
+                            @php
+                            $attendance = $student->attendance->where('date', $date)->first();
+                            @endphp
+                            @if($attendance)
                             {{ $attendance->status }}
-                           
-                            @endforeach
+                            @endif
                         </td>
                         <td>
-                            @foreach($student->attendance as $attendance)
-                            
+                            @if($attendance)
                             {{ $attendance->comment }}
-                            
-                            @endforeach
+                            @endif
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-primary">Save</button>
+            @endif
         </div>
     </div>
 </div>
-</div>
+<script>
+    function clearSearch() {
+        document.getElementById('date').value = 'null';
+        document.querySelector('form').submit();
+    }
+
+</script>
 @endsection

@@ -23,9 +23,12 @@
                 <!-- search bar  -->
                 <div class="col-sm-6 col-md-6">
                     <nav class="navbar-light bg-light float-sm-right">
-                        <form class="d-flex ">
-                            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="d-flex" method="GET" action="/teacher">
+                            <input class="form-control mr-2" type="search" value="{{ request('name') }}" name="name" id="searchInput" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
+                            @if(request()->has('name'))
+                            <button class="btn btn-outline-primary mx-1" type="button" onclick="clearSearch()">Clear</button>
+                            @endif
                         </form>
                     </nav>
                 </div>
@@ -36,6 +39,11 @@
 
     <div class="container-fluid">
         <div class="table-responsive">
+            @if ($teachers->isEmpty() && $search)
+            <h3>No teacher found for '{{ $search }}'.</h3>
+        @elseif ($teachers->isEmpty())
+            <p>No teachers found.</p>
+        @else
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -66,7 +74,18 @@
                 @endforeach
             </table>
         </div>
+        <div class="pagination">
+            {{ $teachers->links() }}
+        </div>
+        @endif
     </div><!-- container-fluid -->
 </div>
 </div>
+<script>
+    function clearSearch() {
+        document.getElementById('searchInput').value = 'null';
+        document.querySelector('form').submit();
+    }
+</script>
 @endsection
+

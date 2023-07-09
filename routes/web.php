@@ -36,6 +36,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::resource('teacher', TeacherController::class);
 
+
+
 Route::resource('grade', GradeController::class);
 
 Route::resource('student', StudentController::class);

@@ -13,10 +13,19 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $teachers = Teacher::all();
-        return view('teacher.index', compact('teachers'));
+        $search = $request->input('name');
+        $query = Teacher::query();
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%$search%")
+                    ->orWhere('contact', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%");
+            });
+        }
+        $teachers = $query->paginate(10);
+        return view('teacher.index', compact('teachers', 'search'));
     }
 
 
@@ -43,7 +52,7 @@ class TeacherController extends Controller
         $teacher->contact = $request->contact;
         $teacher->email = $request->email;
         $teacher->save();
-        toast('Record saved successfully!','success');
+        toast('Record saved successfully!', 'success');
 
         return redirect()->back();
     }
@@ -56,8 +65,11 @@ class TeacherController extends Controller
      */
     public function show($teacher_id)
     {
-        $teachers = Teacher::find($teacher_id);
-        $subjects = $teachers->subjects;
+        $teacher = Teacher::find($teacher_id);
+        if (!$teacher) {
+            abort(404); // or handle the error as per your application's requirements
+        }
+        $subjects = $teacher->subjects;
         return view('subject.view', compact('teachers', 'subjects'));
     }
 
@@ -71,7 +83,6 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::find($id);
         return view('teacher.edit', compact('teacher'));
-
     }
 
     /**
@@ -88,7 +99,7 @@ class TeacherController extends Controller
         $teacher->contact = $request->contact;
         $teacher->email = $request->email;
         $teacher->update();
-        toast('Record updated successfully!','success');
+        toast('Record updated successfully!', 'success');
         return redirect()->back();
     }
 
@@ -102,8 +113,7 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::findOrfail($id);
         $teacher->delete();
-        toast('Record deleted successfully!','success');
+        toast('Record deleted successfully!', 'success');
         return redirect("/teacher");
-
     }
 }

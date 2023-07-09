@@ -9,6 +9,7 @@ class Teacher extends Model
 {
     use HasFactory;
 
+
     /**
      * Get the user associated with the Teacher
      *

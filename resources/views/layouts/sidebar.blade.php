@@ -30,7 +30,7 @@
                with font-awesome or any other icon font library -->
                     <li class="nav-item menu-open">
                     <li class="nav-item">
-                        <a href="/dashboard" class="nav-link">
+                        <a href="/dashboard" class="nav-link @if ( Request::segment(1) == "dashboard") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Dashboard
@@ -39,7 +39,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/teacher" class="nav-link">
+                        <a href="/teacher" class="nav-link @if ( Request::segment(1) == "teacher") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Teachers
@@ -48,7 +48,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/grade" class="nav-link">
+                        <a href="/grade" class="nav-link @if ( Request::segment(1) == "grade") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Classes
@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/student" class="nav-link">
+                        <a href="/student" class="nav-link @if ( Request::segment(1) == "student") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Students
@@ -66,7 +66,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/subject" class="nav-link">
+                        <a href="/subject" class="nav-link @if ( Request::segment(1) == "subject") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Subjects
@@ -75,7 +75,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/student_report" class="nav-link">
+                        <a href="/student_report" class="nav-link @if ( Request::segment(1) == "student_report") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Students Report
@@ -84,7 +84,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/attendance" class="nav-link">
+                        <a href="/attendance" class="nav-link @if ( Request::segment(1) == "attendance") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Attendance
@@ -102,7 +102,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/auth/login" class="nav-link" onclick="event.preventDefault();
+                        <a href="/auth/login" class="nav-link nav-link @if ( Request::segment(1) == "/auth/login") active @endif"" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="nav-icon fas fa-th"></i>
                             {{ __('Logout') }}
                         </a>
@@ -122,7 +122,7 @@
 @include('auth.login')
 @endif
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         var url = window.location;
         $('ul.nav-sidebar a').filter(function() {
@@ -130,4 +130,4 @@
         }).addClass('active');
     });
 
-</script>
+</script> --}}

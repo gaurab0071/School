@@ -18,7 +18,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $grades = Grade::all();
+        $grades = Grade::paginate(10);
         $grade_id = null;
         return view('student.index', compact('grades', 'grade_id'));
     }
