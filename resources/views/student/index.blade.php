@@ -35,7 +35,7 @@
 
     <!-- ----------------------------------Main contents-------------------------------------------- -->
 
-    <div class="col-md-12">
+    <div class="container-fluid">
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -53,7 +53,6 @@
                                 @csrf
                                 @method('delete')
                                 <a href="/student/{{$grade->id}}/view" class="badge btn badge-primary">View</a>
-                                {{-- <a href="/attendance/{{ $grade->id }}/index" class="badge bg-info">Attendance</a> --}}
                                 <button type="submit" class="badge btn badge-danger">Delete</button>
 
                             </form>

@@ -17,7 +17,13 @@
 
                         <div class="form-group">
                             <label for="teacher">Class teacher</label>
-                            <input type="text" id="teacher" class="form-control" name="teacher">
+                            <select id="teacher" class="form-control" name="teacher" data-search="true"
+                                    data-silent-initial-value-set="true">
+                                    <option value="">Select</option>
+                                    @foreach ($teachers as $teacher)
+                                        <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                                    @endforeach
+                                </select>
                         </div>
 
                         <div class="form-group">

@@ -83,7 +83,7 @@
 </div>
 <script>
     function clearSearch() {
-        document.getElementById('searchInput').value = 'null';
+        document.getElementById('searchInput').value = '';
         document.querySelector('form').submit();
     }
 </script>

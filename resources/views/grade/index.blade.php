@@ -37,43 +37,41 @@
 
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>SN</th>
-                                <th>Class</th>
-                                <th>Class Teacher</th>
-                                <th>No of Students</th>
-                                <th>Class Section</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        @foreach ($grades as $grade)
-                        <tbody>
-                            <tr>
-                                <td>{{ $grade->id }}</td>
-                                <td>{{ $grade->name }}</td>
-                                <td>{{ $grade->teacher }}</td>
-                                <td>{{ $grade->number }}</td>
-                                <td>{{ $grade->section }}</td>
-                                <td>
-                                    <form action="/grade/{{ $grade->id }}" method="post">
-                                        @csrf
-                                        {{-- @method('delete') --}}
-                                        <a href="/attendance/{{ $grade->id }}/index" class="badge bg-primary">View</a>
-                                        <a href="/grade/{{ $grade->id }}/edit" class="badge bg-info">Edit</a>                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                        @endforeach
-                    </table>
-                </div>
-            </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Class</th>
+                        <th>Class Teacher</th>
+                        <th>No of Students</th>
+                        <th>Class Section</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @foreach ($grades as $grade)
+                <tbody>
+                    <tr>
+                        <td>{{ $grade->id }}</td>
+                        <td>{{ $grade->name }}</td>
+                        <td>{{ $grade->teacher }}</td>
+                        <td>{{ $grade->number }}</td>
+                        <td>{{ $grade->section }}</td>
+                        <td>
+                            <form action="/grade/{{ $grade->id }}" method="post">
+                                @csrf
+                                {{-- @method('delete') --}}
+                                {{-- <a href="/attendance/{{ $grade->id }}/index" class="badge bg-primary">View</a> --}}
+                                <a href="/grade/{{ $grade->id }}/edit" class="badge bg-info">Edit</a> </form>
+                        </td>
+                    </tr>
+                </tbody>
+                @endforeach
+            </table>
+        </div>
+        <div class="pagination">
+            {{ $grades->links() }}
         </div>
     </div>
-</div>
 </div>
 @endsection

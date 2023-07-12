@@ -59,7 +59,7 @@
                                 @method('delete')
                                 <a href="/attendance/{{$grade->id}}/view" class="badge btn badge-primary">View Attendance</a>
                                 <a href="{{ url('/attendance/create?grade_id=' . $grade->id) }}" class="badge bg-info">Make Attendance</a>
-
+                                <a href="/attendance/{{ $grade->id}}/edit" class="badge bg-info">Edit</a>
                                 <button type="submit" class="badge btn badge-danger">Delete</button>
 
                             </form>

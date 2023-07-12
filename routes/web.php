@@ -40,11 +40,17 @@ Route::resource('teacher', TeacherController::class);
 
 Route::resource('grade', GradeController::class);
 
+Route::get('/student/{grade_id}/view', [StudentController::class, 'show'])->name('student.view');
 Route::resource('student', StudentController::class);
-Route::get('/student/{grade_id}/view', [StudentController::class, 'show']);
+
+
+
+
 
 
 Route::resource('attendance', AttendanceController::class);
+
+
 Route::get('/attendance/{grade_id}/view', [AttendanceController::class, 'show']);
 Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
 Route::post('/attendance/{grade}', [AttendanceController::class, 'store']);

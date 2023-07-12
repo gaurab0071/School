@@ -69,11 +69,20 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($grade_id)
+    public function show($grade_id, Request $request)
     {
-        $students = Student::where('grade_id', $grade_id)->get();
-        $grades = Grade::find($grade_id);
-        return view('student.view', compact('students', 'grades'));
+        $search = $request->input('search');
+        $query = Student::where('grade_id', $grade_id)->orderBy('roll', 'asc');;
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%$search%")
+                    ->orWhere('roll', 'LIKE', "%$search%")
+                    ->orWhere('idnumber', 'LIKE', "%$search%");
+            });
+        }
+        $students = $query->paginate(10);
+        $grades = Grade::findOrFail($grade_id);
+        return view('student.view', compact('students', 'grades', 'search'));
     }
 
 

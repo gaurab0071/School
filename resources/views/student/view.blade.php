@@ -24,9 +24,12 @@
                 <!-- search bar  -->
                 <div class="col-sm-6">
                     <nav class="navbar-light bg-light float-sm-right">
-                        <form class="d-flex ">
-                            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="d-flex" method="GET" action="/student/{{ $grades->id }}/view ">
+                            <input class="form-control mr-2" type="search" value="{{ request('search') }}" name="search" id="searchInput" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
+                            @if(request()->has('search'))
+                            <button class="btn btn-outline-primary mx-1" type="button" onclick="clearSearch()">Clear</button>
+                            @endif
                         </form>
                     </nav>
                 </div>
@@ -35,7 +38,7 @@
     </div><!-- /.content-header -->
 
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 @if (count($students) > 0)
@@ -83,7 +86,15 @@
                 </div>
             </div>
         </div>
+        <div class="pagination">
+            {{ $students->links() }}
+        </div>
     </div>
 </div>
-</div>
+<script>
+    function clearSearch() {
+        document.getElementById('searchInput').value = '';
+        document.querySelector('form').submit();
+    }
+</script>
 @endsection

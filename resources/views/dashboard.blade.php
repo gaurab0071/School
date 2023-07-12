@@ -28,7 +28,7 @@
                     <div class="card bg-danger">
                         <div class="card-body">
                             <div class="inner">
-                                <h3>30</h3>
+                                <h3>{{$teacherCount}}</h3>
                                 <p>Teachers</p>
                             </div>
                             <a href="/teacher" class="small-box-footer text-light">More info
@@ -40,7 +40,7 @@
                     <div class="card bg-success">
                         <div class="card-body">
                             <div class="inner">
-                                <h3>30</h3>
+                                <h3>{{$studentCount}}</h3>
                                 <p>Students</p>
                             </div>
                             <a href="/student" class="small-box-footer text-light">More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -51,7 +51,7 @@
                     <div class="card bg-info">
                         <div class="card-body">
                             <div class="inner">
-                                <h3>PG-X</h3>
+                                <h3>{{$gradeCount}}</h3>
                                 <p>Classes</p>
                             </div>
                             <a href="/grade" class="small-box-footer text-light">More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -72,6 +72,29 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div><!-- /.content -->
+
+
+    <!-- --------------------------------School Calander---------------------------------------- -->
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">School Calendar</h5>
+                <div id="school-calendar"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 </div><!-- /.content wrapper -->
 @endsection
 @else

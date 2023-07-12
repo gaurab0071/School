@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +17,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $teacherCount = Teacher::count();
+        $gradeCount = Grade::count();
+        $studentCount = Student::count();
+        return view('dashboard',compact('teacherCount','gradeCount','studentCount'));
     }
 
     /**

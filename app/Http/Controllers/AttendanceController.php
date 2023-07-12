@@ -59,7 +59,6 @@ class AttendanceController extends Controller
                 toast("Record Saved Successfully !", 'success');
             }
         }
-
         return redirect()->back()->with('success', 'Attendance saved successfully!');
     }
 
@@ -90,9 +89,11 @@ class AttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($grade_id)
     {
-        //
+        $grade = Grade::findOrFail($grade_id);
+        $students = $grade->students;
+        return view('attendance.edit',compact('grade','students'));
     }
 
     /**
@@ -104,7 +105,22 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $date = $request->input('date');
+        $statuses = $request->input('status');
+        $comments = $request->input('comment');
+
+        if ($statuses && is_array($statuses)) {
+            foreach ($statuses as $studentId => $status) {
+                $attendance = Attendance::find($id);
+                $attendance->date = $date;
+                $attendance->idnumber = $studentId;
+                $attendance->status = $status;
+                $attendance->comment = $comments[$studentId] ?? null;
+                $attendance->update();
+                toast("Record Updated Successfully !", 'success');
+            }
+        }
+        return redirect()->back()->with('success', 'Attendance Updated successfully!');
     }
 
     /**
