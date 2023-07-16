@@ -72,32 +72,9 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div><!-- /.content -->
-
-
-    <!-- --------------------------------School Calander---------------------------------------- -->
-
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">School Calendar</h5>
-                <div id="school-calendar"></div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
 </div><!-- /.content wrapper -->
 @endsection
 @else
 <!-- Include the login view when the user is not logged in -->
-@include('layouts.login')
+@include('auth.login')
 @endif

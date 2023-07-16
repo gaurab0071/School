@@ -21,7 +21,7 @@
                                     data-silent-initial-value-set="true">
                                     <option value="">Select</option>
                                     @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                                        <option value="{{ $teacher->name }}">{{ $teacher->name }}</option>
                                     @endforeach
                                 </select>
                         </div>

@@ -15,7 +15,7 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $grades = Grade::paginate(10);
+        $grades = Grade::with('teacher')->paginate(10);
         return view('grade.index', compact('grades'));
     }
 
@@ -74,8 +74,9 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
+        $teachers = Teacher::all();
         $grade = Grade::find($id);
-        return view('grade.edit', compact('grade'));
+        return view('grade.edit', compact('grade','teachers'));
     }
 
     /**

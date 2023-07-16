@@ -16,13 +16,19 @@ class SubjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $grades = Grade::all();
-        $grade_id = null;
-        $teachers = Teacher::all();
-        $teacher_id = null;
-        return view('subject.index',compact('grades', 'teachers'));
+        $query = Subject::query();
+        if ($request->has('grade_id')) {
+            $gradeId = $request->input('grade_id');
+            $query->where('grade_id', $gradeId);
+            $selectedGrade = Grade::find($gradeId);
+        } else {
+            $selectedGrade = null;
+        }
+        $subjects = $query->get();
+        return view('subject.index', compact('grades', 'subjects', 'selectedGrade'));
     }
 
     /**
@@ -55,7 +61,6 @@ class SubjectController extends Controller
         $subject->save();
         toast("Subject Saved Successfully!", 'success');
         return redirect()->back();
-
     }
 
     /**
@@ -67,10 +72,9 @@ class SubjectController extends Controller
     public function show($grade_id)
     {
         $subjects = Subject::where('grade_id', $grade_id)
-                            ->get();
+            ->get();
         $grades = Grade::find($grade_id);
-        return view('subject.view',compact('subjects', 'grades'));
-
+        return view('subject.view', compact('subjects', 'grades'));
     }
 
     /**
@@ -85,7 +89,6 @@ class SubjectController extends Controller
         $grades = Grade::all();
         $teachers = Teacher::all();
         return view('subject.edit', compact('subjects', 'grades', 'teachers'));
-
     }
 
     /**

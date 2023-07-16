@@ -70,7 +70,7 @@
                                 <input type="file" id="section" class="form-control-file" name="report">
                             </div>
 
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="submit" onsubmit="onFormSubmit(event)" class="btn btn-success">Save</button>
                         </form>
                     </div>
                 </div>

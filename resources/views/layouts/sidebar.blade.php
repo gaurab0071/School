@@ -93,6 +93,15 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="/calander" class="nav-link @if ( Request::segment(1) == "calander") active @endif">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                School Calander
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>

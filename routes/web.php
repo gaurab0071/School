@@ -31,8 +31,14 @@ use Symfony\Component\Routing\Route as ComponentRoutingRoute;
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // });
+Route::middleware('guest')->get('/login', function () {
+    return view('layouts.login');
+})->name('login');
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/enrollment-data', [DashboardController::class, 'getEnrollmentData']);
+
 
 Route::resource('teacher', TeacherController::class);
 
@@ -44,6 +50,9 @@ Route::get('/student/{grade_id}/view', [StudentController::class, 'show'])->name
 Route::resource('student', StudentController::class);
 
 
+Route::get('/calander', function () {
+    return view('calander.index');
+});
 
 
 

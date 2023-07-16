@@ -21,8 +21,19 @@
 
                 <div class="form-group">
                     <label for="teacher">Class teacher</label>
-                    <input type="text" id="teacher" class="form-control" name="teacher" value="{{$grade->teacher}}">
+                    <select id="teacher" class="form-control" value="{{$grade->teacher}}" name="teacher" data-search="true"
+                            data-silent-initial-value-set="true">
+                            <option value="">Select</option>
+                            @foreach ($teachers as $teacher)
+                                <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                            @endforeach
+                        </select>
                 </div>
+
+                {{-- <div class="form-group">
+                    <label for="teacher">Class teacher</label>
+                    <input type="text" id="teacher" class="form-control" name="teacher" value="{{$grade->teacher}}">
+                </div> --}}
 
                 <div class="form-group">
                     <label for="number">Student's number</label>

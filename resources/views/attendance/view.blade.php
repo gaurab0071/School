@@ -66,11 +66,15 @@
                             @endphp
                             @if($attendance)
                             {{ $attendance->status }}
+                            @else
+                            No attendance recorded.
                             @endif
                         </td>
                         <td>
                             @if($attendance)
                             {{ $attendance->comment }}
+                            @else
+                            No Comment.
                             @endif
                         </td>
                     </tr>
