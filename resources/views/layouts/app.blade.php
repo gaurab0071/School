@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- Google Font: Source Sans Pro -->
@@ -35,13 +36,16 @@
     <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
+    
+    
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @include('sweetalert::alert')
 
-        @auth       
+        @auth
         @include('layouts.header')
         @endauth
 
@@ -56,32 +60,8 @@
         @endauth
     </div>
 
-    {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> --}}
+
 </body>
 </html>
 
-<script>
-    $(document).ready(function() {
-        $('#grade').on('change', function() {
-            var gradeId = $(this).val();
-            if (gradeId) {
-                $.ajax({
-                    url: '/get-subjects/' + gradeId
-                    , type: "GET"
-                    , dataType: "json"
-                    , success: function(data) {
-                        $('#subject').empty();
-                        $.each(data, function(key, value) {
-                            $('#subject').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#subject').empty();
-            }
-        });
-    });
 
-</script>

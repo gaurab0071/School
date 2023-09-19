@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -50,13 +51,6 @@ Route::get('/student/{grade_id}/view', [StudentController::class, 'show'])->name
 Route::resource('student', StudentController::class);
 
 
-Route::get('/calander', function () {
-    return view('calander.index');
-});
-
-
-
-
 Route::resource('attendance', AttendanceController::class);
 
 
@@ -64,7 +58,10 @@ Route::get('/attendance/{grade_id}/view', [AttendanceController::class, 'show'])
 Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
 Route::post('/attendance/{grade}', [AttendanceController::class, 'store']);
 
-
+Route::get('/calendar', [CalendarController::class, 'index']);
+Route::post('/calendar/create', [CalendarController::class, 'create']);
+Route::post('/calendar/update', [CalendarController::class, 'update']);
+Route::post('/calendar/delete', [CalendarController::class, 'delete']);
 
 
 Route::resource('subject', SubjectController::class);
@@ -72,7 +69,12 @@ Route::get('/subject/{grade_id}/view', [SubjectController::class, 'show']);
 Route::get('/subject/{teacher_id}/view', [SubjectController::class, 'show']);
 
 Route::resource('student_report', ReportController::class);
+Route::post('/student_report/store', [ReportController::class, 'store'])->name('reports.store');
 
+
+// Route::get('/api/grades/{grade}/subjects', 'App\Http\Controllers\GradeController@getSubjects');
+
+Route::get('/api/grades/{grade}/subjects', [GradeController::class, 'getSubjects']);
 
 Auth::routes();
 

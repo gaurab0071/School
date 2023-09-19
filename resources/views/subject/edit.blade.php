@@ -20,6 +20,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="name">Full Marks</label>
+                            <input type="text" id="full_marks" class="form-control" name="full_marks" value="{{ $subjects->full_marks }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Pass Marks</label>
+                            <input type="text" id="pass_marks" class="form-control" name="pass_marks" value="{{ $subjects->pass_marks }}">
+                        </div>
+
+                        <div class="form-group">
                             <label for="teacher">Publication</label>
                             <input type="text" id="publication" class="form-control" name="publication" value="{{ $subjects->publication }}">
                         </div>

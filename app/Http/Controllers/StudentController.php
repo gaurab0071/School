@@ -72,7 +72,7 @@ class StudentController extends Controller
     public function show($grade_id, Request $request)
     {
         $search = $request->input('search');
-        $query = Student::where('grade_id', $grade_id)->orderBy('roll', 'asc');;
+        $query = Student::where('grade_id', $grade_id)->orderBy('roll', 'asc');
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'LIKE', "%$search%")

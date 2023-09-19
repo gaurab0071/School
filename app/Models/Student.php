@@ -17,4 +17,9 @@ class Student extends Model
     {
         return $this->hasMany(Attendance::class, 'idnumber', 'idnumber');
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
 }

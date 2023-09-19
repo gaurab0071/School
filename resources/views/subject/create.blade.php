@@ -11,7 +11,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="name">Subject Code</label>
+                                <label for="subject_code">Subject Code</label>
                                 <input type="text" id="subject_code" class="form-control" name="subject_code">
                             </div>
 
@@ -21,12 +21,22 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="full_marks">Full Marks</label>
+                                <input type="text" id="full_marks" class="form-control" name="full_marks">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pass_marks">Pass Marks</label>
+                                <input type="text" id="pass_marks" class="form-control" name="pass_marks">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="publication">Publication</label>
                                 <input type="text" id="publication" class="form-control" name="publication">
                             </div>
 
                             <div class="form-group">
-                                <label for="number">Academic Year</label>
+                                <label for="year">Academic Year</label>
                                 <input type="text" id="year" class="form-control" name="academic_year">
                             </div>
 

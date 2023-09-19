@@ -4,8 +4,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-1">
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
-            <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <img src="/dist/img/main_logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">EduSphere</span>
         </a>
 
         <!-- Sidebar -->
@@ -93,7 +93,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/calander" class="nav-link @if ( Request::segment(1) == "calander") active @endif">
+                        <a href="/calendar" class="nav-link @if ( Request::segment(1) == "calendar") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 School Calander

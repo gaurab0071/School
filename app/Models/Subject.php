@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'subject_code',
+        'name',
+        'full_marks',
+        'pass_marks',
+        'publication',
+        'academic_year',
+        'teacher_id',
+        'grade_id',
+    ];
+
 
     /**
      * Get the user that owns the Subject
@@ -27,5 +38,10 @@ class Subject extends Model
     public function teacher()
     {
         return $this->belongsTo(Teacher::class);
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
     }
 }

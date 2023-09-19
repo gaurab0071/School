@@ -53,8 +53,6 @@
                             @endif
                         </div>
                     </div>
-
-
                 </div>
             </form>
         </div>
@@ -74,6 +72,8 @@
                                 <tr>
                                     <th>Subject Code</th>
                                     <th>Book Name</th>
+                                    <th>Full Marks</th>
+                                    <th>Pass Marks</th>
                                     <th>Publication</th>
                                     <th>Academic Year</th>
                                     <th>Subject Teacher</th>
@@ -85,6 +85,8 @@
                                 <tr>
                                     <td>{{ $subject->subject_code }}</td>
                                     <td>{{ $subject->name }}</td>
+                                    <td>{{ $subject->full_marks }}</td>
+                                    <td>{{ $subject->pass_marks }}</td>
                                     <td>{{ $subject->publication }}</td>
                                     <td>{{ $subject->academic_year }}</td>
                                     <td>{{ $subject->teacher->name }}</td>

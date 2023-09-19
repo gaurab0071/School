@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Grade;
 use App\Models\Teacher;
 use App\Models\Subject;
-use Psy\Command\WhereamiCommand;
 
 class SubjectController extends Controller
 {
@@ -54,6 +53,8 @@ class SubjectController extends Controller
         $subject = new Subject();
         $subject->subject_code = $request->subject_code;
         $subject->name = $request->name;
+        $subject->full_marks = $request->full_marks;
+        $subject->pass_marks = $request->pass_marks;
         $subject->publication = $request->publication;
         $subject->academic_year = $request->academic_year;
         $subject->grade_id = $request->grade_id;
@@ -103,6 +104,8 @@ class SubjectController extends Controller
         $subject = Subject::findOrFail($id);
         $subject->subject_code = $request->subject_code;
         $subject->name = $request->name;
+        $subject->full_marks = $request->full_marks;
+        $subject->pass_marks = $request->pass_marks;
         $subject->publication = $request->publication;
         $subject->academic_year = $request->academic_year;
         $subject->grade_id = $request->grade_id;

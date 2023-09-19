@@ -27,7 +27,7 @@ class GradeController extends Controller
     public function create()
     {
         $teachers = Teacher::all();
-        return view('grade.create',compact('teachers'));
+        return view('grade.create', compact('teachers'));
     }
 
     /**
@@ -46,8 +46,6 @@ class GradeController extends Controller
         $grade->save();
         toast("Record Saved Successfully !", 'success');
         return redirect()->back();
-
-
     }
 
     /**
@@ -64,7 +62,15 @@ class GradeController extends Controller
         return view('student.view', compact('students', 'grades', 'subjects'));
     }
 
-
+    public function getSubjects($gradeId)
+    {
+        $grade = Grade::find($gradeId);
+        if (!$grade) {
+            return response()->json(['error' => 'Grade not found'], 404);
+        }
+        $subjects = $grade->subjects;
+        return response()->json(['subjects' => $subjects]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,7 +82,7 @@ class GradeController extends Controller
     {
         $teachers = Teacher::all();
         $grade = Grade::find($id);
-        return view('grade.edit', compact('grade','teachers'));
+        return view('grade.edit', compact('grade', 'teachers'));
     }
 
     /**

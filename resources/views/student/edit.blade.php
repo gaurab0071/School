@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card-body">
-                    <a href="/student/view" class="mb-2 mx-2 btn btn-primary">Back</a>
+                    <a href="/student/{{ $students->id }}/view" class="mb-2 mx-2 btn btn-primary">Back</a>
                     <form action="/student/{{ $students->id }}" method="post">
                         @csrf
                         @method('put')
