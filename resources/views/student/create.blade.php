@@ -51,13 +51,13 @@
                         <div class="form-group">
                             <label for="gender">Gender</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="male">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Male
                                 </label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="female">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     female
                                 </label>

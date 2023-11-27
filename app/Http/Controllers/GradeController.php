@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GradeController extends Controller
@@ -26,7 +27,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        $teachers = Teacher::all();
+        $teachers = User::where('role','teacher')->get();
         return view('grade.create', compact('teachers'));
     }
 

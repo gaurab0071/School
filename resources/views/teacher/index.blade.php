@@ -74,9 +74,9 @@
                 @endforeach
             </table>
         </div>
-        <div class="pagination">
+        {{-- <div class="pagination">
             {{ $teachers->links() }}
-        </div>
+        </div> --}}
         @endif
     </div><!-- container-fluid -->
 </div>

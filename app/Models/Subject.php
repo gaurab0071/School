@@ -40,6 +40,7 @@ class Subject extends Model
         return $this->belongsTo(Teacher::class);
     }
 
+
     public function reports()
     {
         return $this->hasMany(Report::class);

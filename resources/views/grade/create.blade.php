@@ -17,13 +17,14 @@
 
                         <div class="form-group">
                             <label for="teacher">Class teacher</label>
-                            <select id="teacher" class="form-control" name="teacher" data-search="true"
-                                    data-silent-initial-value-set="true">
-                                    <option value="">Select</option>
-                                    @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->name }}">{{ $teacher->name }}</option>
-                                    @endforeach
-                                </select>
+                            <select id="teacher" class="form-control" name="teacher" data-search="true" data-silent-initial-value-set="true">
+                                <option value="">Select</option>
+                                @foreach ($teachers as $teacher)
+                                
+                                <option value="{{ $teacher->name }}">{{ $teacher->name }}</option>
+                                
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">

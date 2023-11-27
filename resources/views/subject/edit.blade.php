@@ -43,9 +43,11 @@
                             <label for="teacher_id">Select Teacher</label>
                             <select id="teacher_id" class="form-control" name="teacher_id" placeholder="please select the grade teacher">
                                 @foreach ($teachers as $teacher)
+                                @if($teacher->roles->pluck('name')[0] === 'teacher')
                                 <option value="{{ $teacher->id }}" {{ $teacher->id == old('teacher_id', $subjects->teacher_id) ? 'selected' : '' }}>
                                     {{ $teacher->name }}
                                 </option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>

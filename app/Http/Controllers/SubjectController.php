@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Grade;
 use App\Models\Teacher;
 use App\Models\Subject;
+use App\Models\User;
 
 class SubjectController extends Controller
 {
@@ -17,6 +18,7 @@ class SubjectController extends Controller
      */
     public function index(Request $request)
     {
+        $teachers = User::all();
         $grades = Grade::all();
         $query = Subject::query();
         if ($request->has('grade_id')) {
@@ -27,7 +29,7 @@ class SubjectController extends Controller
             $selectedGrade = null;
         }
         $subjects = $query->get();
-        return view('subject.index', compact('grades', 'subjects', 'selectedGrade'));
+        return view('subject.index', compact('grades', 'subjects', 'selectedGrade','teachers'));
     }
 
     /**
@@ -38,7 +40,7 @@ class SubjectController extends Controller
     public function create()
     {
         $grades = Grade::all();
-        $teachers = Teacher::all();
+        $teachers = User::all();
         return view('subject.create', compact('grades', 'teachers'));
     }
 
@@ -88,7 +90,7 @@ class SubjectController extends Controller
     {
         $subjects = Subject::find($id);
         $grades = Grade::all();
-        $teachers = Teacher::all();
+        $teachers = User::all();
         return view('subject.edit', compact('subjects', 'grades', 'teachers'));
     }
 

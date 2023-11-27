@@ -89,7 +89,11 @@
                                     <td>{{ $subject->pass_marks }}</td>
                                     <td>{{ $subject->publication }}</td>
                                     <td>{{ $subject->academic_year }}</td>
-                                    <td>{{ $subject->teacher->name }}</td>
+                                    <td>
+                                        @if ($subject->teacher)
+                                            {{ $subject->teacher->roles->pluck('name') }}
+                                        @endif
+                                    </td>
                                     <td>
                                         <form action="/subject/{{ $subject->id }}" method="post">
                                             @csrf

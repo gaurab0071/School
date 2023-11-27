@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Student;
-use App\Models\Teacher;
-use App\Models\Grade;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
-class DashboardController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,22 +13,10 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-{
-    // Retrieve the "teacher" role
-    $teacherRole = Role::where('name', 'teacher')->first();
-
-    // Retrieve users with the "teacher" role
-    $teachers = User::where('role', 'teacher')->count();
-
-    $gradeCount = Grade::count();
-    $studentCount = Student::count();
-
-    return view('dashboard', compact('teachers', 'gradeCount', 'studentCount'));
-}
-    public function teacher()
     {
-        return view('teacherDashboard.dashboard');
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +24,8 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('assign_roles.create');
     }
 
     /**

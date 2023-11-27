@@ -8,6 +8,7 @@ use App\Models\Grade;
 use App\Models\Report;
 use App\Models\Student;
 use App\Models\Subject;
+use Exception;
 use Illuminate\Support\Facades\Validator;
 
 class ReportController extends Controller
@@ -65,70 +66,76 @@ class ReportController extends Controller
      */
     public function store(Request $request)
 {
-    $selectedGradeId = $request->input('selected_grade_id');
-    $studentId = $request->input('student_id');
-
-    // Define validation rules for marks
-    $validationRules = [];
-    $reports = []; // Initialize an array to store report objects
-
-    foreach ($request->input('full_marks') as $subjectId => $fullMarks) {
-        $validationRules["full_marks.{$subjectId}"] = [
-            'required',
-            'numeric',
-            Rule::in([$fullMarks]), // Ensure full_marks match the submitted value
-        ];
-        $validationRules["obtained_theory.{$subjectId}"] = [
-            'required',
-            'numeric',
-            'lte:full_marks.' . $subjectId, // Ensure obtained_theory <= full_marks
-        ];
-        $validationRules["obtained_practical.{$subjectId}"] = [
-            'required',
-            'numeric',
-            'lte:full_marks.' . $subjectId, // Ensure obtained_practical <= full_marks
-        ];
-
-        $validationRules["total_marks.{$subjectId}"] = [
-            'required',
-            'numeric',
-            'lte:full_marks.' . $subjectId,
-        ];
-
-        // Create a new Report object for each subject
-        $report = new Report();
-        $report->full_marks = $fullMarks;
-        $report->pass_marks = $request->input('pass_marks')[$subjectId];
-        $report->obtained_theory = $request->input('obtained_theory')[$subjectId];
-        $report->obtained_practical = $request->input('obtained_practical')[$subjectId];
-        // Calculate total marks
-        $report->total_marks = $report->obtained_theory + $report->obtained_practical;
-        $report->grade_id = $selectedGradeId; // Set the grade_id
-        $report->student_id = $studentId;
-        $report->subject_id = $subjectId;
-        // Calculate grade point, grade, and result using your grading logic functions
-        list($report->grade_point, $report->grade, $report->result) = $this->calculateGrading($report->total_marks);
-
-        // Add the report to the array
-        $reports[] = $report;
+    // dd('here');
+    try {
+        $selectedGradeId = $request->input('selected_grade_id');
+        $studentId = $request->input('student_id');
+    
+        // Define validation rules for marks
+        $validationRules = [];
+        $reports = []; // Initialize an array to store report objects
+    
+        foreach ($request->input('full_marks') as $subjectId => $fullMarks) {
+            $validationRules["full_marks.{$subjectId}"] = [
+                'required',
+                'numeric',
+                Rule::in([$fullMarks]), // Ensure full_marks match the submitted value
+            ];
+            $validationRules["obtained_theory.{$subjectId}"] = [
+                'required',
+                'numeric',
+                'lte:full_marks.' . $subjectId, // Ensure obtained_theory <= full_marks
+            ];
+            $validationRules["obtained_practical.{$subjectId}"] = [
+                'required',
+                'numeric',
+                'lte:full_marks.' . $subjectId, // Ensure obtained_practical <= full_marks
+            ];
+    
+            $validationRules["total_marks.{$subjectId}"] = [
+                'required',
+                'numeric',
+                'lte:full_marks.' . $subjectId,
+            ];
+    
+            // Create a new Report object for each subject
+            $report = new Report();
+            $report->full_marks = $fullMarks;
+            $report->pass_marks = $request->input('pass_marks')[$subjectId];
+            $report->obtained_theory = $request->input('obtained_theory')[$subjectId];
+            $report->obtained_practical = $request->input('obtained_practical')[$subjectId];
+            // Calculate total marks
+            $report->total_marks = $report->obtained_theory + $report->obtained_practical;
+            $report->grade_id = $selectedGradeId; // Set the grade_id
+            $report->student_id = $studentId;
+            $report->subject_id = $subjectId;
+            // Calculate grade point, grade, and result using your grading logic functions
+            list($report->grade_point, $report->grade, $report->result) = $this->calculateGrading($report->total_marks);
+    
+            // Add the report to the array
+            $reports[] = $report;
+        }
+    
+        // Validate the request data
+        $validator = Validator::make($request->all(), $validationRules);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
+        // Save all reports in the array
+        foreach ($reports as $report) {
+            $report->save();
+        }
+    
+        toast("Records Saved Successfully!", 'success');
+        return redirect()->back();
+    } catch (Exception $th) {
+        dd( $th);
     }
-
-    // Validate the request data
-    $validator = Validator::make($request->all(), $validationRules);
-
-    if ($validator->fails()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
-    }
-
-    // Save all reports in the array
-    foreach ($reports as $report) {
-        $report->save();
-    }
-
-    toast("Records Saved Successfully!", 'success');
-    return redirect()->back();
+    
 }
 
 

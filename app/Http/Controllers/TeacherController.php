@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -25,6 +26,7 @@ class TeacherController extends Controller
             });
         }
         $teachers = $query->paginate(10);
+        $teachers = User::all();
         return view('teacher.index', compact('teachers', 'search'));
     }
 
@@ -116,4 +118,7 @@ class TeacherController extends Controller
         toast('Record deleted successfully!', 'success');
         return redirect("/teacher");
     }
+    
+
+
 }

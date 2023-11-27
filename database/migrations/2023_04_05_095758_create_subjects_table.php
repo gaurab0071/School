@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('publication');
             $table->string('academic_year');
+            $table->integer('full_marks')->default(0);
+            $table->integer('pass_marks')->default(0);
             $table->timestamps();
             $table->foreignId('grade_id')->references('id')->on('grades');
-            $table->foreignId('teacher_id')->references('id')->on('teachers');
+            $table->foreignId('teacher_id')->references('id')->on('users');
         });
     }
 

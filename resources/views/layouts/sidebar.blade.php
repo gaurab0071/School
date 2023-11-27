@@ -38,6 +38,7 @@
                         </a>
                     </li>
 
+                    @can('classes')
                     <li class="nav-item">
                         <a href="/teacher" class="nav-link @if ( Request::segment(1) == "teacher") active @endif">
                             <i class="nav-icon fas fa-th"></i>
@@ -46,6 +47,7 @@
                             </p>
                         </a>
                     </li>
+                    @endcan
 
                     <li class="nav-item">
                         <a href="/grade" class="nav-link @if ( Request::segment(1) == "grade") active @endif">
@@ -102,7 +104,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/role" class="nav-link @if ( Request::segment(1) == "role") active @endif">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Assign Roles
@@ -131,12 +133,3 @@
 @include('auth.login')
 @endif
 
-{{-- <script>
-    $(document).ready(function() {
-        var url = window.location;
-        $('ul.nav-sidebar a').filter(function() {
-            return this.href == url;
-        }).addClass('active');
-    });
-
-</script> --}}

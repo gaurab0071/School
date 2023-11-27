@@ -66,7 +66,7 @@
                         <table class="table" id="subject">
                             <thead>
                                 <tr>
-                                    
+
                                     <th>Subjects</th>
                                     <th>Full Marks</th>
                                     <th>Pass Marks</th>
@@ -82,7 +82,7 @@
                             <tbody>
                                 @foreach ($subjects as $subject)
                                 <tr>
-                                    
+
                                     <td>{{ $subject->name }}</td>
                                     <td>
                                         <input type="text" name="full_marks[{{ $subject->id }}]" class="form-control" value="{{ $subjectsWithMarks->where('id', $subject->id)->first()->full_marks }}">
@@ -106,18 +106,18 @@
                                             @enderror
                                         </div>
                                     </td>
-                                    
+
                                     <td><input type="text" name="total_marks[{{ $subject->id }}]" class="form-control" value="{{ old('total_marks.' . $subject->id) }}"></td>
-                                    
+
                                     <td><input type="text" name="grade_point[{{ $subject->id }}]" class="form-control" value="{{ old('grade_point.' . $subject->id) }}"></td>
-                                    
+
                                     <td><input type="text" name="grade[{{ $subject->id }}]" class="form-control" value="{{ old('grade.' . $subject->id) }}"></td>
-                                    
+
                                     <td><input type="text" name="result[{{ $subject->id }}]" class="form-control" value="{{ old('result.' . $subject->id) }}"></td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                            
+
 
                         </table>
                         <div class="float-sm-right">
@@ -222,9 +222,6 @@
 
 
 
-
-
-
     // Function to calculate grade point based on total marks and full marks
     function calculateGradePoint(totalMarks, fullMarks) {
         // Your grading logic here
@@ -270,8 +267,8 @@
         }
     }
 
-     // Function to calculate and update grade points when the page loads
-     function calculateInitialGradePoints() {
+    // Function to calculate and update grade points when the page loads
+    function calculateInitialGradePoints() {
         // Iterate through each subject row and calculate the initial grade point
         const subjectRows = document.querySelectorAll('table#subject tbody tr');
         subjectRows.forEach((row) => {
@@ -282,6 +279,10 @@
             const totalMarks = obtainedTheory + obtainedPractical;
             const gradePoint = calculateGradePoint(totalMarks, fullMarks);
             row.querySelector('[name^="grade_point"]').value = gradePoint.toFixed(3);
+            const grade = calculateGrade(gradePoint);
+
+            row.querySelector('[name^="grade"]').value = grade; // Update the grade column
+
         });
     }
 
@@ -289,47 +290,47 @@
     calculateInitialGradePoints();
 
     function calculateResults(input, type) {
-    // Find the closest row element containing the input
-    const row = input.closest('tr');
-    if (!row) {
-        // Ensure that the 'row' element exists
-        return;
+        // Find the closest row element containing the input
+        const row = input.closest('tr');
+        if (!row) {
+            // Ensure that the 'row' element exists
+            return;
+        }
+
+        // Get the values of the input fields within the row
+        const obtainedTheory = parseFloat(row.querySelector('[name^="obtained_theory"]').value || 0);
+        const obtainedPractical = parseFloat(row.querySelector('[name^="obtained_practical"]').value || 0);
+        const fullMarks = parseFloat(row.querySelector('[name^="full_marks"]').value || 0);
+        const passMarks = parseFloat(row.querySelector('[name^="pass_marks"]').value || 0);
+
+        // Calculate the total marks as the sum of obtainedTheory and obtainedPractical
+        const totalMarks = obtainedTheory + obtainedPractical;
+
+        // Update the 'total_marks' input field with the calculated total marks
+        row.querySelector('[name^="total_marks"]').value = totalMarks;
+
+        // Calculate the grade point using your grading logic
+        const gradePoint = calculateGradePoint(totalMarks, fullMarks);
+
+        // Show or hide the "grade" and other fields based on conditions
+        if (obtainedTheory >= passMarks) {
+            // Update the 'grade_point' input field with the calculated grade point
+
+            // Calculate the grade and result using your grading logic functions
+            const grade = calculateGrade(gradePoint);
+            const result = totalMarks >= passMarks ? 'Pass' : 'Fail';
+
+            // Update the 'grade' and 'result' input fields with the calculated values
+            row.querySelector('[name^="grade"]').value = grade; // Update the grade column
+            row.querySelector('[name^="grade_point"]').value = gradePoint.toFixed(2);
+            row.querySelector('[name^="result"]').value = result;
+        } else {
+            // If obtained marks theory is less than pass marks, clear the 'grade' and 'grade_point' input fields
+            row.querySelector('[name^="grade"]').value = '';
+            row.querySelector('[name^="grade_point"]').value = '';
+            row.querySelector('[name^="result"]').value = '';
+        }
     }
-
-    // Get the values of the input fields within the row
-    const obtainedTheory = parseFloat(row.querySelector('[name^="obtained_theory"]').value || 0);
-    const obtainedPractical = parseFloat(row.querySelector('[name^="obtained_practical"]').value || 0);
-    const fullMarks = parseFloat(row.querySelector('[name^="full_marks"]').value || 0);
-    const passMarks = parseFloat(row.querySelector('[name^="pass_marks"]').value || 0);
-
-    // Calculate the total marks as the sum of obtainedTheory and obtainedPractical
-    const totalMarks = obtainedTheory + obtainedPractical;
-
-    // Update the 'total_marks' input field with the calculated total marks
-    row.querySelector('[name^="total_marks"]').value = totalMarks;
-
-    // Calculate the grade point using your grading logic
-    const gradePoint = calculateGradePoint(totalMarks, fullMarks);
-
-    // Show or hide the "grade" and other fields based on conditions
-    if (obtainedTheory >= passMarks) {
-        // Update the 'grade_point' input field with the calculated grade point
-        
-        // Calculate the grade and result using your grading logic functions
-        const grade = calculateGrade(gradePoint);
-        const result = totalMarks >= passMarks ? 'Pass' : 'Fail';
-        
-        // Update the 'grade' and 'result' input fields with the calculated values
-        row.querySelector('[name^="grade_point"]').value = gradePoint.toFixed(2);
-        row.querySelector('[name^="grade"]').value = grade; // Update the grade column
-        row.querySelector('[name^="result"]').value = result;
-    } else {
-        // If obtained marks theory is less than pass marks, clear the 'grade' and 'grade_point' input fields
-        row.querySelector('[name^="grade_point"]').value = '';
-        row.querySelector('[name^="grade"]').value = '';
-        row.querySelector('[name^="result"]').value = '';
-    }
-}
 
 </script>
 

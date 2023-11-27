@@ -52,7 +52,7 @@
                         <th>Student ID</th>
                         <th>Student Name</th>
                         <th>Attendance</th>
-                        <th>Comment</th>
+                        <th>Remarks</th>
                     </tr>
                 </thead>
                 <tbody>

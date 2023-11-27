@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('subjects', function (Blueprint $table) {
-            // $table->integer('full_marks');
-            // $table->integer('pass_marks');
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->unsignedBigInteger('role_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 
@@ -23,11 +23,11 @@ return new class extends Migration
      * Reverse the migrations.
      *
      * @return void
-     */    public function down()
+     */
+    public function down()
     {
-        Schema::table('subjects', function (Blueprint $table) {
-            // $table->dropColumn('full_marks');
-            // $table->dropColumn('pass_marks');
+        Schema::table('teachers', function (Blueprint $table) {
+            //
         });
     }
 };

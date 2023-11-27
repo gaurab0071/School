@@ -6,19 +6,19 @@
         <div class="container-fluid">
             <div class="row mb-1">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Classes</h1>
+                    <h1 class="m-0">Assign Roles</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Classes</li>
+                        <li class="breadcrumb-item active">Assign Roles</li>
                     </ol>
                 </div><!-- /.col -->
 
 
                 <!-- add student button -->
                 <div class="col-sm-6">
-                    <a href="/grade/create" class="mb-2 btn btn-info">+ Add new Class</a>
+                    <a href="/assign_roles/create" class="mb-2 btn btn-info">+ Add new Role</a>
                 </div>
 
                 <!-- search bar  -->
@@ -42,35 +42,58 @@
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th>Class</th>
-                        <th>Class Teacher</th>
-                        <th>No of Students</th>
-                        <th>Class Section</th>
-                        <th>Action</th>
+                        <th>Teacher Name</th>
+                        <th>Roles</th>
+                        <th>Permissions</th>
                     </tr>
                 </thead>
-                @foreach ($grades as $grade)
+                @foreach ($teachers  as $teacher)
                 <tbody>
                     <tr>
-                        <td>{{ $grade->id }}</td>
-                        <td>{{ $grade->name }}</td>
-                        <td>{{ $grade->teacher }}</td>
-                        <td>{{ $grade->number }}</td>
-                        <td>{{ $grade->section }}</td>
+                        <td>{{ $loop->index + 1}}</td>
+                        <td>{{ $teacher->name }}</td>
+                        {{-- <td>
+                            @foreach($teacher->roles as $role)
+                                {{ $role->name }}<br>
+                            @endforeach
+                        </td> --}}
                         <td>
-                            <form action="/grade/{{ $grade->id }}" method="post">
+                            <form method="POST" action="{{ route('assignRoleToTeacher', ['teacherId' => $teacher->id]) }}">
                                 @csrf
-                                <a href="/grade/{{ $grade->id }}/edit" class="badge bg-info">Edit</a> </form>
+                                <select name="role_name" id="role_name">
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" class="badge btn btn-success">Assign Role</button>
+                            </form>
                         </td>
+                        
                     </tr>
                 </tbody>
                 @endforeach
             </table>
         </div>
-        <div class="pagination">
-            {{ $grades->links() }}
-        </div>
+        {{-- <div class="pagination">
+            {{ $teachers->links() }}
+        </div> --}}
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @endsection

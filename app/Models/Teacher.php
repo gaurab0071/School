@@ -24,4 +24,25 @@ class Teacher extends Model
     {
         return $this->hasOne(Teacher::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function hasRole($roleName)
+    {
+        // Retrieve the roles associated with the teacher
+        $roles = $this->roles; // Assuming you have a relationship defined
+
+        // Check if the teacher has the specified role
+        return $roles->contains('name', $roleName);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    
 }
